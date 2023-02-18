@@ -19,7 +19,7 @@ class SccAdmin
 
         if ( !$request->user() ||  $request->user()->roleid != 1)
         {
-            abort(code: 403);
+            abort(code: 404);
         }
 
         return $next($request);

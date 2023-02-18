@@ -1,7 +1,7 @@
 @extends('layouts.master-without-nav')
 
 @section('title')
-@lang('translation.Recover_Password') 2
+@lang('translation.Recover_Password')
 @endsection
 
 @section('css')
@@ -20,22 +20,20 @@
         <div class="container-fluid p-0">
             <div class="row g-0">
 
-                <div class="col-xl-7">
+                <div class="col-xl-9">
                     @component('components.login-page-left')
                     @endcomponent
                 </div>
                 <!-- end col -->
 
-                <div class="col-xl-5">
+                <div class="col-xl-3">
                     <div class="auth-full-page-content p-md-5 p-4">
                         <div class="w-100">
 
                             <div class="d-flex flex-column h-100">
                                 <div class="mb-4 mb-md-5">
                                     <a href="index" class="d-block auth-logo">
-                                        {{-- <img src="{{ URL::asset('/assets/images/logo-dark.png') }}" alt="" height="18" class="auth-logo-dark">
-                                        <img src="{{ URL::asset('/assets/images/logo-light.png') }}" alt="" height="18" class="auth-logo-light"> --}}
-                                        <img src="{{ URL::asset('/assets/images/scc-logo-long.png') }}" alt="" height="18" class="auth-logo-light">
+
                                     </a>
                                 </div>
                                 <div class="my-auto">

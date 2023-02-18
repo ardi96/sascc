@@ -38,6 +38,8 @@ use App\Http\Controllers\ContactController;
  */
 Auth::routes();
 
+Route::get('/contacts-profile', function(){ return View('contacts-profile');});
+
 Route::middleware(['sccadmin'])->group(function(){
     Route::get('/sccadmin', function() { return View('scc.admin-index'); })->name('sccadmin');
     Route::resource('users', UserController::class);

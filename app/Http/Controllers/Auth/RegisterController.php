@@ -57,9 +57,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'dob' => ['required', 'date', 'before:today'],
+            // 'dob' => ['required', 'date', 'before:today'],
             'avatar' => ['image' ,'mimes:jpg,jpeg,png','max:1024'],
-            'nric' => ['required','string','unique:users',new nric],
+            // 'nric' => ['required','string','unique:users',new nric],
             'mobileno' => ['required','string','unique:users','max:12',new mymobileno],
         ]);
     }
@@ -87,9 +87,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'dob' => date('Y-m-d', strtotime($data['dob'])),
+            // 'dob' => date('Y-m-d', strtotime($data['dob'])),
             'avatar' => "/images/" . $avatarName,
-            'nric' => $data['nric'],
+            // 'nric' => $data['nric'],
             'mobileno' => $data['mobileno'],
         ]);
 

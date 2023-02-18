@@ -2,19 +2,34 @@
 
 @section('title') @lang('translation.User_List') @endsection
 
+@section('css')
+    <!-- DataTables -->
+    <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
 
     @component('components.breadcrumb')
-        @slot('li_1') Contacts @endslot
+        @slot('li_1') Users @endslot
         @slot('title') Users List @endslot
     @endcomponent
 
     <div class="row">
+        @if (Session::has('msg') )
+        <div class="alert alert-primary alert-dismissible fade show overlay" role="alert">
+           {{Session::get('msg')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="text-sm-end mt-2 mt-sm-0 mb-2">
+                        <a href="users/create" class="btn btn-success">
+                            <i class="mdi mdi-account-plus me-1"></i> New User </a>
+                    </div>
                     <div class="table-responsive">
-                        <table class="table align-middle table-nowrap table-hover">
+                        <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                             <thead class="table-light">
                                 <tr>
                                     <th scope="col" style="width: 70px;">#</th>
@@ -23,6 +38,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Mobile No</th>
                                     <th scope="col" style="text-align: center">Locked</th>
+                                    <th scope="col" style="text-align: center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,7 +54,7 @@
                                             {{ $item->username }}
                                         </td>
                                         <td>
-                                            {{ $item->name }}
+                                            <a href="/users/{{ $item->id}}"> {{ $item->name }} </a>
                                         </td>
                                         <td>
                                             {{ $item->email }}
@@ -49,40 +65,31 @@
                                         <td style="text-align:center">
                                             <input class="form-check-input" type="checkbox" id="formCheck2" @if ($item->locked) checked @endif @disabled(true)>
                                         </td>
+                                        <td style="text-align:center">
+                                            <ul class="list-inline font-size-20 contact-links mb-0">
+                                                <li class="list-inline-item px-2">
+                                                    <a href="/users/{{ $item->id}}/edit" title="Edit"><i class="bx bx-edit-alt"></i></a>
+                                                </li>
+                                                <li class="list-inline-item px-2">
+                                                    <a href="/users/{{ $item->id}}" title="Show"><i class="bx bx-show-alt"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <ul class="pagination pagination-rounded justify-content-center mt-4">
-                                <li class="page-item disabled">
-                                    <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">4</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">5</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <!-- Required datatable js -->
+    <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <!-- Datatable init js -->
+    <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
 @endsection

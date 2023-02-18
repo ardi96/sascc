@@ -19,7 +19,11 @@
                             <h1 class="display-2 fw-medium">4<i class="bx bx-buoy bx-spin text-primary display-3"></i>4</h1>
                             <h4 class="text-uppercase">Sorry, page not found</h4>
                             <div class="mt-5 text-center">
-                                <a class="btn btn-primary waves-effect waves-light" href="index">Back to Dashboard</a>
+                                @if ( Auth::user()->roleid == 1)
+                                    <a class="btn btn-primary waves-effect waves-light" href="sccadmin">Back to Admin Dashboard</a>
+                                @else
+                                    <a class="btn btn-primary waves-effect waves-light" href="index">Back to User Dashboard</a>
+                                @endif
                             </div>
                         </div>
                     </div>

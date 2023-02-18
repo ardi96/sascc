@@ -77,7 +77,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="mb-3 row">
+                                                {{-- <div class="mb-3 row">
                                                     <label for="nric" class="col-form-label col-md-4">NRIC</label>
 
                                                     <div class="col-md-8">
@@ -91,7 +91,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="mb-3 row">
                                                     <label for="mobileno" class="col-md-4 col-form-label">Mobile No</label>
@@ -154,7 +154,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="mb-3 row">
+                                                {{-- <div class="mb-3 row">
                                                     <label for="userdob" class="col-form-label col-md-4">Date of Birth</label>
 
                                                     <div class="col-md-8">
@@ -172,7 +172,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="mb-3 row">
                                                     <label for="avatar" class="col-form-label col-md-4">Profile Picture</label>

@@ -18,7 +18,7 @@ class IsSccClient
     {
         if ( !$request->user() ||  $request->user()->roleid != 0)
         {
-            abort(code: 403);
+            abort(code: 404);
         }
 
         return $next($request);
