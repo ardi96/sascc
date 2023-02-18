@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,17 +38,15 @@ use Illuminate\Support\Facades\Route;
  */
 Auth::routes();
 
-
 Route::middleware(['sccadmin'])->group(function(){
     Route::get('/sccadmin', function() { return View('scc.admin-index'); })->name('sccadmin');
-    Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+    Route::resource('users', UserController::class);
 });
 
 
 Route::middleware(['issccclient'])->group(function() {
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
-
 
     // //Update User Details
     Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
@@ -58,7 +57,7 @@ Route::middleware(['issccclient'])->group(function() {
 
     Route::get('/contacts', [ContactController::class,'index'])->name('contacts');
 
-    Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+    // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 });
 
