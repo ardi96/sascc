@@ -18,24 +18,24 @@
         <div class="container-fluid p-0">
             <div class="row g-0">
 
-                <div class="col-xl-7">
+                <div class="col-xl-9">
                     <?php $__env->startComponent('components.login-page-left'); ?>
                     <?php echo $__env->renderComponent(); ?>
                 </div>
                 <!-- end col -->
 
-                <div class="col-xl-5">
+                <div class="col-xl-3">
                     <div class="auth-full-page-content p-md-5 p-4">
                         <div class="w-100">
 
                             <div class="d-flex flex-column h-100">
-                                <div class="mb-4 mb-md-5">
-                                    <a href="index" class="d-block auth-logo">
-                                        <img src="<?php echo e(URL::asset('/assets/images/scc-logo-long.png')); ?>" alt="" height="64" class="auth-logo-dark">
-                                        <img src="<?php echo e(URL::asset('/assets/images/scc-logo-long.png')); ?>" alt="" height="64" class="auth-logo-light">
+                                
+                                    
                                         
-                                    </a>
-                                </div>
+                                        
+                                        
+                                    
+                                
                                 <div class="my-auto">
 
                                     <div>

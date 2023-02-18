@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,39 +15,51 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// /**
+//  * Login Page for SCC Officer
+//  */
+// Route::get('/scc-login',function(){
+//      return view('auth1.login');
+// });
+
+
+// Route::post('/scc-login',[App\Http\Controllers\Auth\SccLoginController::class,'login'])->name('scc-login');
+
+
+// Route::get('/scc/index',function(){
+//     return view('dashboard-job');
+// })->name('scc-index');
+
+
+/**
+ * Group routing for external/public user
+ */
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
-//Update User Details
-Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
-Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
+Route::middleware(['sccadmin'])->group(function(){
+    Route::get('/sccadmin', function() { return View('scc.admin-index'); })->name('sccadmin');
+    Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+});
 
-//Language Translation
-Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
-Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::middleware(['issccclient'])->group(function() {
 
-Route::group(['prefix' => 'sccadm'], function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
-    Route::get('login',function(){
-        return view('auth1.login');
-    })->name('scc-login');
 
-    Route::group(['middleware'=>'scc-admin'],function(){
+    // //Update User Details
+    Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
-        Route::get('/tasks-list',function(){
-            return view('tasks-list');
-        })->name('scc-tasks');
+    // //Language Translation
+    Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
-        // Route::get('/ui-cards', [App\Http\Controllers\HomeController::class, 'index'])->name('scc-index');
-        Route::get('/ui-cards', function(){
-            return view('ui-cards');
-        })->name('scc-ui-cards');
+    Route::get('/contacts', [ContactController::class,'index'])->name('contacts');
 
-        Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('scc-index');
-
-    });
+    Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 });
+
 

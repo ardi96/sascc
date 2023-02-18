@@ -21,23 +21,23 @@
             <div class="container-fluid p-0">
                 <div class="row g-0">
 
-                    <div class="col-xl-7">
+                    <div class="col-xl-9">
                         @component('components.login-page-left')
                         @endcomponent
                     </div>
                     <!-- end col -->
 
-                    <div class="col-xl-5">
+                    <div class="col-xl-3">
                         <div class="auth-full-page-content p-md-5 p-4">
                             <div class="w-100">
 
                                 <div class="d-flex flex-column h-100">
-                                    <div class="mb-4 mb-md-5">
-                                        <a href="index" class="d-block auth-logo">
-                                            <img src="{{ URL::asset('/assets/images/scc-logo-long.png') }}" alt="" height="64" class="auth-logo-dark">
+                                    {{-- <div class="mb-4 mb-md-5"> --}}
+                                        {{-- <a href="index" class="d-block auth-logo"> --}}
+                                            {{-- <img src="{{ URL::asset('/assets/images/scc-logo-long.png') }}" alt="" height="64" class="auth-logo-dark"> --}}
                                             {{-- <img src="{{ URL::asset('/assets/images/logo-light.png') }}" alt="" height="18" class="auth-logo-light"> --}}
-                                        </a>
-                                    </div>
+                                        {{-- </a> --}}
+                                    {{-- </div> --}}
                                     <div class="my-auto">
                                         <div>
                                             <h5 class="text-primary">Register Account</h5>
@@ -50,8 +50,8 @@
 
 
                                                 <div class="mb-3 row">
-                                                    <label for="username" class="col-md-2 col-form-label">User Name</label>
-                                                    <div class="col-md-10">
+                                                    <label for="username" class="col-md-4 col-form-label">User Name</label>
+                                                    <div class="col-md-8">
                                                         <input type="text" class="form-control @error('username') is-invalid @enderror" id="useremail"
                                                         value="{{ old('username') }}" name="username" placeholder="Choose your user name for login" autofocus required>
 
@@ -64,8 +64,8 @@
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="useremail" class="col-md-2 col-form-label">Email</label>
-                                                    <div class="col-md-10">
+                                                    <label for="useremail" class="col-md-4 col-form-label">Email</label>
+                                                    <div class="col-md-8">
                                                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="useremail"
                                                         value="{{ old('email') }}" name="email" placeholder="Enter email" autofocus required>
 
@@ -78,9 +78,9 @@
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="nric" class="col-form-label col-md-2">NRIC</label>
+                                                    <label for="nric" class="col-form-label col-md-4">NRIC</label>
 
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-8">
                                                         <input type="text" class="form-control @error('nric') is-invalid @enderror" id="nric"
                                                         value="{{ old('nric') }}" name="nric" placeholder="Enter NRIC" autofocus required>
 
@@ -94,9 +94,9 @@
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="mobileno" class="col-md-2 col-form-label">Mobile No</label>
+                                                    <label for="mobileno" class="col-md-4 col-form-label">Mobile No</label>
 
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-8">
                                                         <input type="tel" class="form-control @error('mobileno') is-invalid @enderror"
                                                         value="{{ old('mobileno') }}" id="mobileno" name="mobileno" autofocus required
                                                             placeholder="Enter Mobile Number (format: 01xxxxxxxx)">
@@ -111,8 +111,8 @@
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="username" class="col-form-label col-md-2">Full Name</label>
-                                                    <div class="col-md-10">
+                                                    <label for="username" class="col-form-label col-md-4">Full Name</label>
+                                                    <div class="col-md-8">
                                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                                         value="{{ old('name') }}" id="username" name="name" autofocus required
                                                             placeholder="Enter Full Name">
@@ -127,8 +127,8 @@
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="userpassword" class="col-form-label col-md-2">Password</label>
-                                                    <div class="col-md-10">
+                                                    <label for="userpassword" class="col-form-label col-md-4">Password</label>
+                                                    <div class="col-md-8">
                                                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="userpassword" name="password"
                                                             placeholder="Enter password" autofocus required>
 
@@ -141,8 +141,8 @@
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="confirmpassword" class="col-form-label col-md-2">Confirm Pwd.</label>
-                                                    <div class="col-md-10">
+                                                    <label for="confirmpassword" class="col-form-label col-md-4">Confirm Pwd.</label>
+                                                    <div class="col-md-8">
                                                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="confirmpassword"
                                                         name="password_confirmation" placeholder="Enter Confirm password" autofocus required>
 
@@ -155,9 +155,9 @@
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="userdob" class="col-form-label col-md-2">Date of Birth</label>
+                                                    <label for="userdob" class="col-form-label col-md-4">Date of Birth</label>
 
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-8">
                                                         <div class="input-group" id="datepicker1">
                                                                 <input type="text" class="form-control @error('dob') is-invalid @enderror" placeholder="dd-mm-yyyy"
                                                                     data-date-format="dd-mm-yyyy" data-date-container='#datepicker1' data-date-end-date="0d" value="{{ old('dob') }}"
@@ -175,11 +175,11 @@
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="avatar" class="col-form-label col-md-2">Profile Picture</label>
-                                                    <div class="col-md-10">
+                                                    <label for="avatar" class="col-form-label col-md-4">Profile Picture</label>
+                                                    <div class="col-md-8">
                                                         <div class="input-group">
                                                             <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="inputGroupFile02" name="avatar" autofocus>
-                                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                                            {{-- <label class="input-group-text" for="inputGroupFile02">Upload</label> --}}
                                                         </div>
 
                                                         @error('avatar')

@@ -21,23 +21,23 @@
             <div class="container-fluid p-0">
                 <div class="row g-0">
 
-                    <div class="col-xl-7">
+                    <div class="col-xl-9">
                         <?php $__env->startComponent('components.login-page-left'); ?>
                         <?php echo $__env->renderComponent(); ?>
                     </div>
                     <!-- end col -->
 
-                    <div class="col-xl-5">
+                    <div class="col-xl-3">
                         <div class="auth-full-page-content p-md-5 p-4">
                             <div class="w-100">
 
                                 <div class="d-flex flex-column h-100">
-                                    <div class="mb-4 mb-md-5">
-                                        <a href="index" class="d-block auth-logo">
-                                            <img src="<?php echo e(URL::asset('/assets/images/scc-logo-long.png')); ?>" alt="" height="64" class="auth-logo-dark">
+                                    
+                                        
                                             
-                                        </a>
-                                    </div>
+                                            
+                                        
+                                    
                                     <div class="my-auto">
                                         <div>
                                             <h5 class="text-primary">Register Account</h5>
@@ -50,8 +50,8 @@
 
 
                                                 <div class="mb-3 row">
-                                                    <label for="username" class="col-md-2 col-form-label">User Name</label>
-                                                    <div class="col-md-10">
+                                                    <label for="username" class="col-md-4 col-form-label">User Name</label>
+                                                    <div class="col-md-8">
                                                         <input type="text" class="form-control <?php $__errorArgs = ['username'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -78,8 +78,8 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="useremail" class="col-md-2 col-form-label">Email</label>
-                                                    <div class="col-md-10">
+                                                    <label for="useremail" class="col-md-4 col-form-label">Email</label>
+                                                    <div class="col-md-8">
                                                         <input type="email" class="form-control <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -106,9 +106,9 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="nric" class="col-form-label col-md-2">NRIC</label>
+                                                    <label for="nric" class="col-form-label col-md-4">NRIC</label>
 
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-8">
                                                         <input type="text" class="form-control <?php $__errorArgs = ['nric'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -136,9 +136,9 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="mobileno" class="col-md-2 col-form-label">Mobile No</label>
+                                                    <label for="mobileno" class="col-md-4 col-form-label">Mobile No</label>
 
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-8">
                                                         <input type="tel" class="form-control <?php $__errorArgs = ['mobileno'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -167,8 +167,8 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="username" class="col-form-label col-md-2">Full Name</label>
-                                                    <div class="col-md-10">
+                                                    <label for="username" class="col-form-label col-md-4">Full Name</label>
+                                                    <div class="col-md-8">
                                                         <input type="text" class="form-control <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -197,8 +197,8 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="userpassword" class="col-form-label col-md-2">Password</label>
-                                                    <div class="col-md-10">
+                                                    <label for="userpassword" class="col-form-label col-md-4">Password</label>
+                                                    <div class="col-md-8">
                                                         <input type="password" class="form-control <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -225,8 +225,8 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="confirmpassword" class="col-form-label col-md-2">Confirm Pwd.</label>
-                                                    <div class="col-md-10">
+                                                    <label for="confirmpassword" class="col-form-label col-md-4">Confirm Pwd.</label>
+                                                    <div class="col-md-8">
                                                         <input type="password" class="form-control <?php $__errorArgs = ['password_confirmation'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -253,9 +253,9 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="userdob" class="col-form-label col-md-2">Date of Birth</label>
+                                                    <label for="userdob" class="col-form-label col-md-4">Date of Birth</label>
 
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-8">
                                                         <div class="input-group" id="datepicker1">
                                                                 <input type="text" class="form-control <?php $__errorArgs = ['dob'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -287,8 +287,8 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                                 <div class="mb-3 row">
-                                                    <label for="avatar" class="col-form-label col-md-2">Profile Picture</label>
-                                                    <div class="col-md-10">
+                                                    <label for="avatar" class="col-form-label col-md-4">Profile Picture</label>
+                                                    <div class="col-md-8">
                                                         <div class="input-group">
                                                             <input type="file" class="form-control <?php $__errorArgs = ['avatar'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -298,7 +298,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="inputGroupFile02" name="avatar" autofocus>
-                                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                                            
                                                         </div>
 
                                                         <?php $__errorArgs = ['avatar'];

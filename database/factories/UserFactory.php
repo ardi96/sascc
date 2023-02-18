@@ -15,7 +15,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'username'=>Str::random(4).rand(100,999),
+            'username'=>Str::random(4).'.'.rand(100,999),
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
@@ -25,7 +25,10 @@ class UserFactory extends Factory
             'nric' => date('ymd',strtotime($this->faker->date())).'3243'.rand(10,99),
             'avatar' => '/images/default-avatar.jpg',
             'mobileno' => '01'.rand(100000000,999999990),
+            'employer' => $this->faker->company(),
+            'city' => $this->faker->city()
         ];
+
     }
 
     /**

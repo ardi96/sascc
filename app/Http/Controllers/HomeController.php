@@ -22,6 +22,14 @@ class HomeController extends Controller
     }
 
     /**
+     * show the administrator index page
+     */
+    public function sccadmin(Request $request)
+    {
+        return view('scc.admin-index');
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -29,26 +37,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-        $i = strpos($request->path(),'/');
-
-        $vwname = '';
-
-        if ($i)
-        {
-            $vwname = substr($request->path(),$i);
-        }
-        else
-        {
-            $vwname = $request->path();
-        }
-
-
-        // if (view()->exists($request->path())) {
-        //     return view($request->path());
-        // }
-
-        if (view()->exists($vwname)) {
-            return view($vwname);
+        if (view()->exists($request->path())) {
+            return view($request->path());
         }
 
         return abort(404);

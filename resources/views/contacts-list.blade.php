@@ -20,8 +20,9 @@
                                     <th scope="col" style="width: 70px;">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Tags</th>
-                                    <th scope="col">Projects</th>
+                                    <th scope="col">NRIC</th>
+                                    <th scope="col">Date of Birth</th>
+                                    <th scope="col">Mobile No</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -29,9 +30,8 @@
                                 <tr>
                                     <td>
                                         <div class="avatar-xs">
-                                            <span class="avatar-title rounded-circle">
-                                                D
-                                            </span>
+                                            <img class="rounded-circle avatar-xs" src="{{ URL::asset('/assets/images/users/avatar-2.jpg') }}"
+                                            alt="">
                                         </div>
                                     </td>
                                     <td>

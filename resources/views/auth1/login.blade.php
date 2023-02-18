@@ -20,7 +20,7 @@
                                     <div class="col-7">
                                         <div class="text-primary p-4">
                                             <h5 class="text-primary">Welcome Back !</h5>
-                                            <p>Sign in to continue to Skote.</p>
+                                            <p>Sign in to continue to {{ config('app.name'); }}.</p>
                                         </div>
                                     </div>
                                     <div class="col-5 align-self-end">
@@ -50,15 +50,19 @@
                                     </a>
                                 </div>
                                 <div class="p-2">
-                                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                                    <form class="form-horizontal" method="POST" action="{{ route('scc-login') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Email</label>
-                                            <input name="email" type="email"
+                                            <label for="username" class="form-label">User Name</label>
+                                            {{-- <input name="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror"
                                                 value="{{ old('email', 'admin@themesbrand.com') }}" id="username"
-                                                placeholder="Enter Email" autocomplete="email" autofocus>
-                                            @error('email')
+                                                placeholder="Enter Email" autocomplete="email" autofocus> --}}
+                                            <input name="username" type="text"
+                                                class="form-control @error('username') is-invalid @enderror"
+                                                value="{{ old('username') }}" id="username"
+                                                placeholder="Enter your username for login" autocomplete="username" autofocus>
+                                            @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -71,7 +75,7 @@
                                                 class="input-group auth-pass-inputgroup @error('password') is-invalid @enderror">
                                                 <input type="password" name="password"
                                                     class="form-control  @error('password') is-invalid @enderror"
-                                                    id="userpassword" value="123456" placeholder="Enter password"
+                                                    id="userpassword" placeholder="Enter password"
                                                     aria-label="Password" aria-describedby="password-addon">
                                                 <button class="btn btn-light " type="button" id="password-addon"><i
                                                         class="mdi mdi-eye-outline"></i></button>
@@ -83,13 +87,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-check">
+                                        {{-- <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="remember"
                                                 {{ old('remember') ? 'checked' : '' }}>
                                             <label class="form-check-label" for="remember">
                                                 Remember me
                                             </label>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="mt-3 d-grid">
                                             <button class="btn btn-primary waves-effect waves-light" type="submit">Log
@@ -97,7 +101,7 @@
                                         </div>
 
                                         <div class="mt-4 text-center">
-                                            <h5 class="font-size-14 mb-3">Sign in with</h5>
+                                            {{-- <h5 class="font-size-14 mb-3">Sign in with</h5>
 
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
@@ -116,16 +120,16 @@
                                                         <i class="mdi mdi-google"></i>
                                                     </a>
                                                 </li>
-                                            </ul>
+                                            </ul> --}}
                                         </div>
 
-                                        <div class="mt-4 text-center">
+                                        {{-- <div class="mt-4 text-center">
                                             @if (Route::has('password.request'))
                                                 <a href="{{ route('password.request') }}" class="text-muted"><i
                                                         class="mdi mdi-lock me-1"></i> Forgot your password?</a>
                                             @endif
 
-                                        </div>
+                                        </div> --}}
                                     </form>
                                 </div>
 
@@ -134,12 +138,12 @@
                         <div class="mt-5 text-center">
 
                             <div>
-                                <p>Don't have an account ? <a href="{{ url('register') }}" class="fw-medium text-primary">
-                                        Signup now </a> </p>
+                                {{-- <p>Don't have an account ? <a href="{{ url('register') }}" class="fw-medium text-primary">
+                                        Signup now </a> </p> --}}
                                 <p>© <script>
                                         document.write(new Date().getFullYear())
 
-                                    </script> Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                                    </script> Sabah Credit Corporation. Crafted with <i class="mdi mdi-heart text-danger"></i> by SCC
                                 </p>
                             </div>
                         </div>

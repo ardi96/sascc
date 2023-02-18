@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class SccAdmin
+class IsSccClient
 {
     /**
      * Handle an incoming request.
@@ -16,25 +16,11 @@ class SccAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-
-        if ( !$request->user() ||  $request->user()->roleid != 1)
+        if ( !$request->user() ||  $request->user()->roleid != 0)
         {
             abort(code: 403);
         }
 
         return $next($request);
-    }
-
-    /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string|null
-     */
-    protected function redirectTo($request)
-    {
-        if (! $request->expectsJson()) {
-            return route('login');
-        }
     }
 }
