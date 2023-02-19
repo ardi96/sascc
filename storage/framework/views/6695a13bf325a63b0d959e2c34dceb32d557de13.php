@@ -1,26 +1,21 @@
-@extends('layouts.master')
 
-@section('title') @lang('translation.User_List') @endsection
 
-@section('css')
+<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.User_List'); ?> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('css'); ?>
     <!-- DataTables -->
-    <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection
+    <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
-    @component('components.breadcrumb')
-        @slot('li_1') Users @endslot
-        @slot('title') Users List @endslot
-    @endcomponent
+    <?php $__env->startComponent('components.breadcrumb'); ?>
+        <?php $__env->slot('li_1'); ?> Users <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?> Users List <?php $__env->endSlot(); ?>
+    <?php echo $__env->renderComponent(); ?>
 
     <div class="row">
-        {{-- @if (Session::has('msg') )
-        <div class="alert alert-primary alert-dismissible fade show overlay" role="alert">
-           {{Session::get('msg')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif --}}
+        
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
@@ -43,54 +38,58 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $item)
+                                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td>
                                             <div class="avatar-xs">
-                                                <img class="rounded-circle avatar-xs" src="{{ URL::asset($item->avatar) }}"
+                                                <img class="rounded-circle avatar-xs" src="<?php echo e(URL::asset($item->avatar)); ?>"
                                                 alt="">
                                             </div>
                                         </td>
                                         <td>
-                                            {{ $item->username }}
+                                            <?php echo e($item->username); ?>
+
                                         </td>
 
                                         <td>
-                                             {{ $item->name }}
+                                             <?php echo e($item->name); ?>
+
                                         </td>
 
                                         <td>
-                                            @if ($item->roleid == 1 )
+                                            <?php if($item->roleid == 1 ): ?>
                                                 SCC Officer
-                                            @elseif ($item->roleid == 2)
+                                            <?php elseif($item->roleid == 2): ?>
                                                 Company/Employer
-                                            @else
+                                            <?php else: ?>
                                                 Client
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
 
                                         <td>
-                                            {{ $item->email }}
+                                            <?php echo e($item->email); ?>
+
                                         </td>
                                         <td>
-                                            {{ $item->mobileno }}
+                                            <?php echo e($item->mobileno); ?>
+
                                         </td>
 
                                         <td style="text-align:center">
-                                            <input class="form-check-input" type="checkbox" id="formCheck2" @if ($item->locked) checked @endif @disabled(true)>
+                                            <input class="form-check-input" type="checkbox" id="formCheck2" <?php if($item->locked): ?> checked <?php endif; ?> <?php if(true): echo 'disabled'; endif; ?>>
                                         </td>
                                         <td style="text-align:center">
                                             <ul class="list-inline font-size-20 contact-links mb-0">
                                                 <li class="list-inline-item px-2">
-                                                    <a href="/users/{{ $item->id}}/edit" title="Edit"><i class="bx bx-edit-alt"></i></a>
+                                                    <a href="/users/<?php echo e($item->id); ?>/edit" title="Edit"><i class="bx bx-edit-alt"></i></a>
                                                 </li>
                                                 <li class="list-inline-item px-2">
-                                                    <a href="/users/{{ $item->id}}" title="Show"><i class="bx bx-show-alt"></i></a>
+                                                    <a href="/users/<?php echo e($item->id); ?>" title="Show"><i class="bx bx-show-alt"></i></a>
                                                 </li>
                                             </ul>
                                         </td>
                                     </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
                     </div>
@@ -98,12 +97,13 @@
             </div>
         </div>
     </div>
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
     <!-- Required datatable js -->
-    <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
-    <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
-    <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('/assets/libs/jszip/jszip.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('/assets/libs/pdfmake/pdfmake.min.js')); ?>"></script>
     <!-- Datatable init js -->
-    <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
-@endsection
+    <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\admin\resources\views/scc/user-list.blade.php ENDPATH**/ ?>

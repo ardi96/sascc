@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') @lang('translation.User_List') @endsection
+@section('title') @lang('translation.Company_List') @endsection
 
 @section('css')
     <!-- DataTables -->
@@ -10,8 +10,8 @@
 @section('content')
 
     @component('components.breadcrumb')
-        @slot('li_1') Users @endslot
-        @slot('title') Users List @endslot
+        @slot('li_1') Companies @endslot
+        @slot('title') Company List @endslot
     @endcomponent
 
     <div class="row">
@@ -25,67 +25,56 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-sm-end mt-2 mt-sm-0 mb-2">
-                        <a href="users/create" class="btn btn-success">
-                            <i class="mdi mdi-account-plus me-1"></i> New User </a>
+                        <a href="companies/create" class="btn btn-success">
+                            <i class="mdi mdi-account-plus me-1"></i> New Company </a>
                     </div>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col" style="width: 70px;">#</th>
-                                    <th scope="col">User Name</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Mobile No</th>
-                                    <th scope="col" style="text-align: center">Locked</th>
+                                    <th scope="col">Company ID</th>
+                                    <th scope="col">Company Name</th>
+                                    <th scope="col">Contact Person Name</th>
+                                    <th scope="col">Contact Email</th>
+                                    <th scope="col">Contact Phone Number</th>
+                                    <th scope="col">Location</th>
                                     <th scope="col" style="text-align: center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $item)
+                                @foreach ($companies as $item)
                                     <tr>
                                         <td>
-                                            <div class="avatar-xs">
-                                                <img class="rounded-circle avatar-xs" src="{{ URL::asset($item->avatar) }}"
-                                                alt="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            {{ $item->username }}
+                                            {{ $item->id }}
                                         </td>
 
                                         <td>
-                                             {{ $item->name }}
+                                            {{ $item->name }}
                                         </td>
 
                                         <td>
-                                            @if ($item->roleid == 1 )
-                                                SCC Officer
-                                            @elseif ($item->roleid == 2)
-                                                Company/Employer
-                                            @else
-                                                Client
-                                            @endif
+                                            {{ $item->contact_person}}
                                         </td>
 
                                         <td>
-                                            {{ $item->email }}
-                                        </td>
-                                        <td>
-                                            {{ $item->mobileno }}
+                                            {{ $item->contact_email}}
                                         </td>
 
-                                        <td style="text-align:center">
-                                            <input class="form-check-input" type="checkbox" id="formCheck2" @if ($item->locked) checked @endif @disabled(true)>
+                                        <td>
+                                            {{ $item->contact_phone_no}}
                                         </td>
+
+                                        <td>
+                                            {{ $item->location }}
+                                        </td>
+
                                         <td style="text-align:center">
                                             <ul class="list-inline font-size-20 contact-links mb-0">
                                                 <li class="list-inline-item px-2">
-                                                    <a href="/users/{{ $item->id}}/edit" title="Edit"><i class="bx bx-edit-alt"></i></a>
+                                                    <a href="/companies/{{ $item->id}}/edit" title="Edit"><i class="bx bx-edit-alt"></i></a>
                                                 </li>
                                                 <li class="list-inline-item px-2">
-                                                    <a href="/users/{{ $item->id}}" title="Show"><i class="bx bx-show-alt"></i></a>
+                                                    <a href="/companies/{{ $item->id}}" title="Show"><i class="bx bx-show-alt"></i></a>
                                                 </li>
                                             </ul>
                                         </td>

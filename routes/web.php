@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -43,6 +44,7 @@ Route::get('/contacts-profile', function(){ return View('contacts-profile');});
 Route::middleware(['sccadmin'])->group(function(){
     Route::get('/sccadmin', function() { return View('scc.admin-index'); })->name('sccadmin');
     Route::resource('users', UserController::class);
+    Route::resource('companies', CompanyController::class);
 });
 
 

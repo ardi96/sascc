@@ -1,21 +1,21 @@
-@extends('layouts.master')
 
-@section('title') @lang('translation.User_Create') @endsection
 
-@section('content')
+<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.User_Create'); ?> <?php $__env->stopSection(); ?>
 
-    @component('components.breadcrumb')
-        @slot('li_1') Users @endslot
-        @slot('title') Create User @endslot
-    @endcomponent
+<?php $__env->startSection('content'); ?>
+
+    <?php $__env->startComponent('components.breadcrumb'); ?>
+        <?php $__env->slot('li_1'); ?> Users <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?> Create User <?php $__env->endSlot(); ?>
+    <?php echo $__env->renderComponent(); ?>
 
     <div class="row">
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
-                    {{-- <form method="POST" class="form-horizontal" action="{{ route('users/$user->id') }}" enctype="multipart/form-data"> --}}
-                    <form method="POST" class="form-horizontal" action="{{ url('users') }}" enctype="multipart/form-data">
-                        @csrf
+                    
+                    <form method="POST" class="form-horizontal" action="<?php echo e(url('users')); ?>" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
 
                         <div class="row mb-4">
                             <label for="horizontal-username-input" class="col-sm-3 col-form-label">User Name</label>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div>
                                     <button type="submit" class="btn btn-primary w-md">Save</button>
-                                    <a href="{{ route('users.index') }}" class="btn btn-primary w-md">Cancel</a>
+                                    <a href="<?php echo e(route('users.index')); ?>" class="btn btn-primary w-md">Cancel</a>
                                 </div>
                             </div>
                         </div>
@@ -84,4 +84,6 @@
             <!-- end card -->
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\admin\resources\views/scc/user-create.blade.php ENDPATH**/ ?>

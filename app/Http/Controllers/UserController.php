@@ -41,7 +41,7 @@ class UserController extends Controller
         User::create([
             'name' => $request->get('name'),
             'username' => $request->get('username'),
-            'roleid' => "1",
+            'roleid' => $request->get('roleid'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
             'avatar' => 'images/default-avatar.jpg',
