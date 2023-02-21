@@ -10,7 +10,7 @@
     @endcomponent
 
     <div class="row">
-        <div class="col-xl-6">
+        <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4">{{ $company->name }}</h4>

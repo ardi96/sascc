@@ -78,6 +78,7 @@ return [
   "Login" => "Login",
   "Register" => "Register",
   "Recover_Password" => "Recover Password",
+  "Change_Password" => "Change Password",
   "Lock_Screen" => "Lock Screen",
   "Confirm_Mail" => "Confirm Mail",
   "Email_verification" => "Email verification",
@@ -177,7 +178,6 @@ return [
   "Edit_Details" => "Edit Details",
   "Placeholders" => "Placeholders",
   "Toasts" => "Toasts",
-  
   "Jobs" => "Jobs",
   "Job_List" => "Job List",
   "Job_Grid" => "Job Grid",
@@ -188,4 +188,9 @@ return [
   "List" => "List",
   "Overview" => "Overview",
   "Utilities" => "Utilities",
+  "Client_List" => "Client List",
+  "Company_List" => "Company List",
+  "Company_Create" => "Create Company",
+  "Client_Import" => "Import Client",
+  "User_Create" => "Create User",
 ];

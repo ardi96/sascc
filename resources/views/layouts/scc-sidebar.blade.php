@@ -16,9 +16,10 @@
                         <span key="t-dashboards">Users and Clients</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="users" key="t-default">Users</a></li>
-                        <li><a href="companies" key="t-saas">Companies</a></li>
-                        <li><a href="clients" key="t-crypto">Clients</a></li>
+                        <li><a href="/users" key="t-default">Users</a></li>
+                        <li><a href="/companies" key="t-saas">Companies</a></li>
+                        <li><a href="/clients" key="t-crypto">Clients</a></li>
+                        <li><a href="/clients-import" key="t-crypto">Import Clients</a></li>
                     </ul>
                 </li>
 

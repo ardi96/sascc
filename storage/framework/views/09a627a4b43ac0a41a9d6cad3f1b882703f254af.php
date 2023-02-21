@@ -13,12 +13,13 @@
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-user"></i>
                         
-                        <span key="t-dashboards">User and Clients</span>
+                        <span key="t-dashboards">Users and Clients</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="users" key="t-default">Users</a></li>
-                        <li><a href="companies" key="t-saas">Companies</a></li>
-                        <li><a href="clients" key="t-crypto">Clients</a></li>
+                        <li><a href="/users" key="t-default">Users</a></li>
+                        <li><a href="/companies" key="t-saas">Companies</a></li>
+                        <li><a href="/clients" key="t-crypto">Clients</a></li>
+                        <li><a href="/clients-import" key="t-crypto">Import Clients</a></li>
                     </ul>
                 </li>
 

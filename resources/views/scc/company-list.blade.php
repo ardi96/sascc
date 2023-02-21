@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <div class="text-sm-end mt-2 mt-sm-0 mb-2">
                         <a href="companies/create" class="btn btn-success">
-                            <i class="mdi mdi-account-plus me-1"></i> New Company </a>
+                            <i class="mdi mdi-office-building me-1"></i> New Company </a>
                     </div>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">

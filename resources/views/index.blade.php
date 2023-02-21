@@ -31,30 +31,37 @@
             </div>
             <div class="card-body pt-0">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-5">
                         <div class="avatar-md profile-user-wid mb-4">
-                            <img src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}" alt="" class="img-thumbnail rounded-circle">
+                            <img src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}" alt=""
+                            class="img-thumbnail rounded-circle">
                         </div>
-                        {{-- <h5 class="font-size-15 text-truncate">{{ Str::ucfirst(Auth::user()->name) }}</h5> --}}
-                        <p class="text-muted mb-0 text-truncate">Kementrian Pendidikan</p>
+                        <h5 class="font-size-15">{{ Str::ucfirst(Auth::user()->name) }}</h5>
+                        <p class="text-muted mb-0 text-truncate">
+                            @if (Auth::user()->client)
+                                {{ Auth::user()->client->work_place }}
+                            @endif
+                        </p>
+                        <div class="mt-4">
+                            <a href="documents" class="btn btn-primary waves-effect waves-light btn-sm">View Documents <i class="mdi mdi-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
 
-                    <div class="col-sm-8">
+                    <div class="col-sm-7">
                         <div class="pt-4">
-
                             <div class="row">
-                                <div class="col-6">
+                                {{-- <div class="col-6">
                                     <h5 class="font-size-15">125</h5>
                                     <p class="text-muted mb-0">Projects</p>
                                 </div>
                                 <div class="col-6">
                                     <h5 class="font-size-15">$1245</h5>
                                     <p class="text-muted mb-0">Revenue</p>
-                                </div>
+                                </div> --}}
                             </div>
-                            <div class="mt-4">
-                                <a href="contacts-profile" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
-                            </div>
+                            {{-- <div class="mt-4">
+                                <a href="documents" class="btn btn-primary waves-effect waves-light btn-sm">View Documents <i class="mdi mdi-arrow-right ms-1"></i></a>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -94,7 +101,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">Subscription Status</p>
-                                <h4 class="mb-0">Active</h4>
+                                <h4 class="mb-0">Pending</h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -155,7 +162,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-sm-flex flex-wrap">
-                    <h4 class="card-title mb-4">Latest Transactions</h4>
+                    <h4 class="card-title mb-4">Your Advance Request</h4>
                     <div class="ms-auto">
                         <ul class="nav nav-pills">
                             <li class="nav-item">

@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\Models\User;
-use App\Rules\mymobileno;
 use App\Rules\nric;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\Client;
+use App\Rules\mymobileno;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -82,7 +84,7 @@ class RegisterController extends Controller
             $avatar->move($avatarPath, $avatarName);
         }
 
-        return User::create([
+        $createdUser =  User::create([
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
@@ -92,6 +94,16 @@ class RegisterController extends Controller
             // 'nric' => $data['nric'],
             'mobileno' => $data['mobileno'],
         ]);
+
+        Client::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'mobileno' => $data['mobileno'],
+            'status' => '1000',
+            'user_id' => $createdUser->id,
+        ]);
+
+        return $createdUser;
 
     }
 

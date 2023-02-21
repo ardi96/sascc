@@ -21,13 +21,13 @@
             <div class="container-fluid p-0">
                 <div class="row g-0">
 
-                    <div class="col-xl-9">
+                    <div class="col-xl-8">
                         @component('components.login-page-left')
                         @endcomponent
                     </div>
                     <!-- end col -->
 
-                    <div class="col-xl-3">
+                    <div class="col-xl-4">
                         <div class="auth-full-page-content p-md-5 p-4">
                             <div class="w-100">
 
