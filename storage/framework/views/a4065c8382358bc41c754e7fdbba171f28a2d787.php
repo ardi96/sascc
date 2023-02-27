@@ -5,10 +5,11 @@
 <?php $__env->startSection('css'); ?>
     <!-- DataTables -->
     <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
+ 
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('body'); ?>
-    <body data-topbar="light" data-layout="horizontal">
+    <body data-topbar="light" data-layout="horizontal" style="width:80%; margin:0 auto;">
 <?php $__env->stopSection(); ?>
 
 
@@ -20,8 +21,10 @@
 <?php $__env->slot('title'); ?> Document Upload <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 
+
+
 <div class="row">
-    <div class="col-xl-8">
+    <div class="col-xl-12">
     
         <div class="card">
             <div class="card-body">
@@ -96,10 +99,20 @@ unset($__errorArgs, $__bag); ?>
         <!-- end card -->
     </div>
 </div>
-
 <!-- end row -->
+
+<?php if( session()->has('msg') ): ?>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <?php echo e(session()->get('msg')); ?>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <?php echo e(session()->forget('msg')); ?>
+
+    </div> 
+<?php endif; ?> 
+
 <div class="row">
-    <div class="col-xl-8">
+    <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -132,14 +145,25 @@ unset($__errorArgs, $__bag); ?>
                                     </td>
 
                                     <td>
-                                        <?php echo e($item->status); ?>
-
+                                        <?php if( $item->status  == "1000" ): ?>
+                                            Pending Verification
+                                        <?php elseif( $item->status  == "4000" ): ?>
+                                            Verified
+                                        <?php endif; ?> 
                                     </td>
 
                                     <td style="text-align:center">
                                         <ul class="list-inline font-size-20 contact-links mb-0">
                                             <li class="list-inline-item px-2">
                                                 <a href="<?php echo e($item->filename); ?>" target="_new" title="Show"><i class="bx bx-show-alt"></i></a>
+                                                
+                                                <?php if( $item->status == "1000" ): ?>
+                                                    <form id="frm_delete" style="float: right" method="POST" action="<?php echo e(route('client-documents.destroy',['id'=>$item->id])); ?>">
+                                                        <?php echo csrf_field(); ?>
+                                                        <a href="#" onclick="submit_form()">
+                                                            <i class="bx bx-trash"></i></a> 
+                                                    </form>
+                                                <?php endif; ?> 
                                             </li>
                                         </ul>
                                     </td>
@@ -159,6 +183,19 @@ unset($__errorArgs, $__bag); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
+
+<script>
+    function submit_form()
+    {
+        let form = document.getElementById("frm_delete");
+        if ( confirm('Are you sure you want to delete ? '))
+        {
+            form.submit();
+        }
+    }   
+</script>
+
+
 <!-- apexcharts -->
 <script src="<?php echo e(URL::asset('/assets/libs/apexcharts/apexcharts.min.js')); ?>"></script>
 
@@ -174,4 +211,5 @@ unset($__errorArgs, $__bag); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
 
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\admin\resources\views/client/document-upload.blade.php ENDPATH**/ ?>

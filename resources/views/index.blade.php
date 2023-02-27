@@ -3,10 +3,18 @@
 @section('title') @lang('translation.Dashboards') @endsection
 
 @section('body')
-    <body data-topbar="light" data-layout="horizontal">
+    <body data-topbar="light" data-layout="horizontal" style="margin:0 auto;">
 @endsection
 
 @section('content')
+
+@if ( session()->has('msg') )
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        {{ session()->get('msg') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ session()->forget('msg') }}
+    </div> 
+@endif 
 
 @component('components.breadcrumb')
 @slot('li_1') Dashboards @endslot
@@ -36,14 +44,14 @@
                             <img src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}" alt=""
                             class="img-thumbnail rounded-circle">
                         </div>
-                        <h5 class="font-size-15">{{ Str::ucfirst(Auth::user()->name) }}</h5>
+                        <h5 class="font-size-15">{{ Str::ucfirst(Auth::user()->client->name) }}</h5>
                         <p class="text-muted mb-0 text-truncate">
-                            @if (Auth::user()->client)
+                            
                                 {{ Auth::user()->client->work_place }}
-                            @endif
+                            
                         </p>
                         <div class="mt-4">
-                            <a href="documents" class="btn btn-primary waves-effect waves-light btn-sm">View Documents <i class="mdi mdi-arrow-right ms-1"></i></a>
+                            <a href="/profile-update" class="btn btn-primary waves-effect waves-light btn-sm">Update Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
                         </div>
                     </div>
 

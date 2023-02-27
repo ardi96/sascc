@@ -6,6 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ClientAdvanceController;
+use App\Http\Controllers\ClientDocumentController;
+use App\Models\ClientAdvance;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +60,12 @@ Route::middleware(['issccclient'])->group(function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
     // //Update User Details
-    Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
+    Route::get('/profile-update',[ClientController::class,'edit']);
+    
+    // Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
+    
+    Route::post('/update-profile/{id}', [App\Http\Controllers\ClientController::class, 'update'])->name('updateProfile');
+    
     Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
     // //Language Translation
@@ -67,9 +75,15 @@ Route::middleware(['issccclient'])->group(function() {
 
     Route::get('/contacts-profile', function(){ return View('contacts-profile');});
 
-    Route::get('/documents',[ClientController::class,'showClientDocuments'])->name('client.document');
+    Route::get('/documents',[ClientController::class,'showClientDocuments'])->name('client.documents');
 
     Route::post('/documents',[ClientController::class,'uploadClientDocument']);
+
+    Route::post('/document-delete',[ClientDocumentController::class,'destroy'])->name('client-documents.destroy');
+
+    Route::resource('advances',ClientAdvanceController::class);
+    
+    // Route::get('/advances',[ClientAdvanceController::class,'index'])->name('advances');
 
     Route::get('/index',[App\Http\Controllers\HomeController::class, 'index'])->name('index');
 

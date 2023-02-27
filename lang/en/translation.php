@@ -188,9 +188,17 @@ return [
   "List" => "List",
   "Overview" => "Overview",
   "Utilities" => "Utilities",
+
   "Client_List" => "Client List",
   "Company_List" => "Company List",
   "Company_Create" => "Create Company",
   "Client_Import" => "Import Client",
   "User_Create" => "Create User",
+  "Index" => "Index",
+  "Home" => "Home",
+  "Documents" => "Documents",
+  "Profile_Update" => "Update Profile",
+  "Application_Link" => "Menu Link",
+  "Advance_Request" => "Advance Request"
+
 ];

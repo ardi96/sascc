@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\ClientDocument;
 use App\Http\Requests\StoreClientDocumentRequest;
 use App\Http\Requests\UpdateClientDocumentRequest;
@@ -79,8 +80,19 @@ class ClientDocumentController extends Controller
      * @param  \App\Models\ClientDocument  $clientDocument
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClientDocument $clientDocument)
+    // public function destroy(ClientDocument $clientDocument)
+    public function destroy(Request $request)
     {
-        //
+
+        $id = $request->id; 
+
+        if ( ClientDocument::find($id) )
+        {
+            ClientDocument::destroy($id);
+            return redirect()->route('client.documents')->with('msg','document deleted');
+        }
+
+        return redirect()->route('client.documents')->with('msg','document can not be deleted');
+        
     }
 }

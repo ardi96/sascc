@@ -3,10 +3,20 @@
 <?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Dashboards'); ?> <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('body'); ?>
-    <body data-topbar="light" data-layout="horizontal">
+    <body data-topbar="light" data-layout="horizontal" style="margin:0 auto;">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+
+<?php if( session()->has('msg') ): ?>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <?php echo e(session()->get('msg')); ?>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <?php echo e(session()->forget('msg')); ?>
+
+    </div> 
+<?php endif; ?> 
 
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Dashboards <?php $__env->endSlot(); ?>
@@ -36,15 +46,15 @@
                             <img src="<?php echo e(isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg')); ?>" alt=""
                             class="img-thumbnail rounded-circle">
                         </div>
-                        <h5 class="font-size-15"><?php echo e(Str::ucfirst(Auth::user()->name)); ?></h5>
+                        <h5 class="font-size-15"><?php echo e(Str::ucfirst(Auth::user()->client->name)); ?></h5>
                         <p class="text-muted mb-0 text-truncate">
-                            <?php if(Auth::user()->client): ?>
+                            
                                 <?php echo e(Auth::user()->client->work_place); ?>
 
-                            <?php endif; ?>
+                            
                         </p>
                         <div class="mt-4">
-                            <a href="documents" class="btn btn-primary waves-effect waves-light btn-sm">View Documents <i class="mdi mdi-arrow-right ms-1"></i></a>
+                            <a href="/profile-update" class="btn btn-primary waves-effect waves-light btn-sm">Update Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
                         </div>
                     </div>
 

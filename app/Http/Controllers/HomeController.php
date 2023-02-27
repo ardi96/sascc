@@ -87,17 +87,27 @@ class HomeController extends Controller
         if ($user) {
             Session::flash('message', 'User Details Updated successfully!');
             Session::flash('alert-class', 'alert-success');
-            return response()->json([
-                'isSuccess' => true,
-                'Message' => "User Details Updated successfully!"
-            ], 200); // Status code here
+            
+            return redirect('/index');
+
+            // return response()->json([
+            //     'isSuccess' => true,
+            //     'Message' => "User Details Updated successfully!"
+            // ], 200); // Status code here
+
+
         } else {
             Session::flash('message', 'Something went wrong!');
             Session::flash('alert-class', 'alert-danger');
+            
+            return redirect('/index');
+            
             return response()->json([
                 'isSuccess' => true,
                 'Message' => "Something went wrong!"
             ], 200); // Status code here
+
+
         }
     }
 

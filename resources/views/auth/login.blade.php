@@ -68,11 +68,7 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <div class="float-end">
-                                                    @if (Route::has('password.request'))
-                                                    <a href="{{ route('password.request') }}" class="text-muted">Forgot password?</a>
-                                                    @endif
-                                                </div>
+                                                
                                                 <label class="form-label">Password</label>
                                                 <div class="input-group auth-pass-inputgroup @error('password') is-invalid @enderror">
                                                     <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" id="userpassword" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
@@ -90,6 +86,11 @@
                                                 <label class="form-check-label" for="remember">
                                                     Remember me
                                                 </label>
+                                                <div class="float-end">
+                                                    @if (Route::has('password.request'))
+                                                    <a href="{{ route('password.request') }}" class="text-muted">Forgot password?</a>
+                                                    @endif
+                                                </div>
                                             </div>
 
                                             <div class="mt-3 d-grid">

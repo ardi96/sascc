@@ -72,11 +72,7 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
 
                                             <div class="mb-3">
-                                                <div class="float-end">
-                                                    <?php if(Route::has('password.request')): ?>
-                                                    <a href="<?php echo e(route('password.request')); ?>" class="text-muted">Forgot password?</a>
-                                                    <?php endif; ?>
-                                                </div>
+                                                
                                                 <label class="form-label">Password</label>
                                                 <div class="input-group auth-pass-inputgroup <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -115,6 +111,11 @@ unset($__errorArgs, $__bag); ?>
                                                 <label class="form-check-label" for="remember">
                                                     Remember me
                                                 </label>
+                                                <div class="float-end">
+                                                    <?php if(Route::has('password.request')): ?>
+                                                    <a href="<?php echo e(route('password.request')); ?>" class="text-muted">Forgot password?</a>
+                                                    <?php endif; ?>
+                                                </div>
                                             </div>
 
                                             <div class="mt-3 d-grid">
