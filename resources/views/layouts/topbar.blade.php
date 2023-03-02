@@ -9,6 +9,7 @@
                     </span>
                     <span class="logo-lg">
                         {{-- <img src="{{ URL::asset('/assets/images/logo-dark.png') }}" alt="" height="17"> --}}
+                        <img src="{{ URL::asset('/assets/images/scc-logo-black.png') }}" alt="" height="48">
                     </span>
                 </a>
 
@@ -18,6 +19,7 @@
                     </span>
                     <span class="logo-lg">
                         {{-- <img src="{{ URL::asset('/assets/images/logo-light.png') }}" alt="" height="19"> --}}
+                        <img src="{{ URL::asset('/assets/images/scc-logo-black.png') }}" alt="" height="48">
                     </span>
                 </a>
             </div>

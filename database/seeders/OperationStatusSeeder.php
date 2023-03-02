@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ClientAdvanceSeeder extends Seeder
+class OperationStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class ClientAdvanceSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\ClientAdvance::factory(10)->create();
+        //
     }
 }

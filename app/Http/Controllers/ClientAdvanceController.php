@@ -17,12 +17,11 @@ class ClientAdvanceController extends Controller
      */
     public function index()
     {
-        $client = Client::find(Auth::user()->client_id);
+        $client = Client::where('user_id', Auth::user()->id)->first();
 
-        
-        $advance = null;
+        $advances = ClientAdvance::where('client_id',$client->id)->get();
 
-        return view('client.advance-list',['advance' => $advance]);
+        return view('client.advance-list',['advances' => $advances]);
     }
 
     /**

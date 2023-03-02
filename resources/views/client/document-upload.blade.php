@@ -9,7 +9,8 @@
 @endsection
 
 @section('body')
-    <body data-topbar="light" data-layout="horizontal" style="width:80%; margin:0 auto;">
+    <body data-topbar="dark" data-layout="horizontal" style="width:80%; margin:0 auto;">
+    {{-- <body data-topbar="light" data-layout="horizontal" style="width:80%; margin:0 auto;"> --}}
 @endsection
 
 {{-- data-layout-size="boxed" --}}
@@ -74,7 +75,7 @@
                         <div class="col-sm-9">
                             <div>
                                 <button type="submit" class="btn btn-primary w-md">Uplad</button>
-                                <a href="{{ route('index') }}" class="btn btn-primary w-md">Back</a>
+                                <a href="{{ route('index') }}" class="btn btn-secondary w-md">Back</a>
                             </div>
                         </div>
                     </div>

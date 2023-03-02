@@ -9,7 +9,8 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('body'); ?>
-    <body data-topbar="light" data-layout="horizontal" style="width:80%; margin:0 auto;">
+    <body data-topbar="dark" data-layout="horizontal" style="width:80%; margin:0 auto;">
+    
 <?php $__env->stopSection(); ?>
 
 
@@ -88,7 +89,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="col-sm-9">
                             <div>
                                 <button type="submit" class="btn btn-primary w-md">Uplad</button>
-                                <a href="<?php echo e(route('index')); ?>" class="btn btn-primary w-md">Back</a>
+                                <a href="<?php echo e(route('index')); ?>" class="btn btn-secondary w-md">Back</a>
                             </div>
                         </div>
                     </div>

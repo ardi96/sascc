@@ -9,6 +9,7 @@
                     </span>
                     <span class="logo-lg">
                         
+                        <img src="<?php echo e(URL::asset('/assets/images/scc-logo-black.png')); ?>" alt="" height="48">
                     </span>
                 </a>
 
@@ -18,6 +19,7 @@
                     </span>
                     <span class="logo-lg">
                         
+                        <img src="<?php echo e(URL::asset('/assets/images/scc-logo-black.png')); ?>" alt="" height="48">
                     </span>
                 </a>
             </div>

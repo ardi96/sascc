@@ -8,7 +8,8 @@
     <meta content="SCC Advance Salary System" name="description" />
     <meta content="Ardiansyah" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="<?php echo e(URL::asset('assets/images/favicon.ico')); ?>">
+    
+    <link rel="icon" href="<?php echo e(URL::asset('assets/images/scc_logo2.png')); ?>">
     <?php echo $__env->make('layouts.head-css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </head>
 

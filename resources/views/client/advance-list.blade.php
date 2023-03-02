@@ -24,10 +24,63 @@
 
 <div class="row">
     <div class="col-xl-12">
-        @if ($advance)
+        @if ($advances)
         <div class="card">
             <div class="card-body">
-                
+                <div class="table-responsive">
+                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Requested Date</th>
+                                <th scope="col">Requested Amount</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" style="text-align: center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($advances as $item)
+                                <tr>
+                                    <td>
+                                        {{ $item->id }}
+                                    </td>
+
+                                    <td>
+                                        {{ date("d/m/Y", strtotime($item->requested_date)) }}
+                                    </td>
+
+                                    <td style="text-align: right">
+                                        RM{{ $item->advance_amount }}
+                                    </td>
+
+                                    <td>
+                                        @if ( $item->status  == "1000" )
+                                            Pending Verification
+                                        @elseif ( $item->status  == "4000" )
+                                            Verified
+                                        @endif 
+                                    </td>
+
+                                    <td style="text-align:center">
+                                        <ul class="list-inline font-size-20 contact-links mb-0">
+                                            <li class="list-inline-item px-2">
+                                                <a href="{{ URL::route('advances.show',$item->id) }}" target="_new" title="Show"><i class="bx bx-show-alt"></i></a>
+                                                
+                                                @if ( $item->status == "1000" )
+                                                    <form id="frm_delete" style="float: right" method="POST" action="{{ route('client-documents.destroy',['id'=>$item->id])}}">
+                                                        @csrf
+                                                        <a href="#" onclick="submit_form()">
+                                                            <i class="bx bx-trash"></i></a> 
+                                                    </form>
+                                                @endif 
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- end card body -->
         </div>

@@ -12,13 +12,14 @@
                         <img src="{{ URL::asset ('/assets/images/scc-logo-long.png') }}" alt="" height="64">
                     </span>
                 </a>
-
+                
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
                         {{-- <img src="{{ URL::asset ('/assets/images/logo-light.svg') }}" alt="" height="22"> --}}
                     </span>
                     <span class="logo-lg">
                         {{-- <img src="{{ URL::asset ('/assets/images/logo-light.png') }}" alt="" height="19"> --}}
+                        <img src="{{ URL::asset ('/assets/images/scc-logo-long.png') }}" alt="" height="64">
                     </span>
                 </a>
             </div>

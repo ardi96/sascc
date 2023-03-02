@@ -12,13 +12,14 @@
                         <img src="<?php echo e(URL::asset ('/assets/images/scc-logo-long.png')); ?>" alt="" height="64">
                     </span>
                 </a>
-
+                
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
                         
                     </span>
                     <span class="logo-lg">
                         
+                        <img src="<?php echo e(URL::asset ('/assets/images/scc-logo-long.png')); ?>" alt="" height="64">
                     </span>
                 </a>
             </div>
