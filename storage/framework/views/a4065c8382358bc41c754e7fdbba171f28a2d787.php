@@ -9,8 +9,8 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('body'); ?>
-    <body data-topbar="dark" data-layout="horizontal" style="width:80%; margin:0 auto;">
     
+    <body data-topbar="light" data-layout="horizontal" style="width:80%; margin:0 auto;">
 <?php $__env->stopSection(); ?>
 
 

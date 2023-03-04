@@ -58,7 +58,7 @@
                                                 @enderror
                                             </div> --}}
                                             <div class="mb-3">
-                                                <label for="username" class="form-label">User Name</label>
+                                                <label for="username" class="form-label">User ID</label>
                                                 <input name="username" type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" id="username" placeholder="Enter user name"  autocomplete="username" autofocus>
                                                 @error('username')
                                                 <span class="invalid-feedback" role="alert">

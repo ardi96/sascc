@@ -14,6 +14,7 @@
                             <a href="<?php echo e(route('index')); ?>" class="dropdown-item" key="t-chat"><i class="bx bx-home me-2"></i><?php echo app('translator')->get('translation.Home'); ?></a>
                             <a href="<?php echo e(route('client.documents')); ?>" class="dropdown-item" key="t-file-manager"><i class="bx bx-file me-2"></i><?php echo app('translator')->get('translation.Documents'); ?></a>
                             <a href="/profile-update" class="dropdown-item" key="t-file-manager"><i class="bx bx-user-check me-2"></i><?php echo app('translator')->get('translation.Profile_Update'); ?></a>
+                            <a href="<?php echo e(route('profile.view')); ?>" class="dropdown-item" key="t-file-manager"><i class="bx bx-id-card me-2"></i><?php echo app('translator')->get('translation.Registration_Slip'); ?></a>
                             <a href="<?php echo e(route('advances.index')); ?>" class="dropdown-item" key="t-file-manager"><i class="bx bx-money me-2"></i><?php echo app('translator')->get('translation.Advance_Request'); ?></a>
                         </div>
 

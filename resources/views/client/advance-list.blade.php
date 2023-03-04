@@ -28,12 +28,14 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
+                    
                     <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead class="table-light">
                             <tr>
                                 <th scope="col">Id</th>
                                 <th scope="col">Requested Date</th>
                                 <th scope="col">Requested Amount</th>
+                                <th scope="col">Duration</th>
                                 <th scope="col">Status</th>
                                 <th scope="col" style="text-align: center">Action</th>
                             </tr>
@@ -51,6 +53,10 @@
 
                                     <td style="text-align: right">
                                         RM{{ $item->advance_amount }}
+                                    </td>
+                                    
+                                    <td>
+                                        {{ $item->duration }} Month(s)
                                     </td>
 
                                     <td>
@@ -98,7 +104,14 @@
     </div>
 </div>
 <!-- end row -->
-
+<div class="row">
+    <div class="text-sm-end mt-2 mt-sm-0 mb-2">
+        <button type="button" class="btn btn-primary waves-effect waves-light"
+            onclick="window.location.href='{{ route('advances.create') }}'">
+                Request Salary Advance <i class="bx bx-right-arrow-circle font-size-16 align-middle me-2"></i>
+            </button>
+    </div>
+</div>
 @endsection
 @section('script')
 

@@ -170,9 +170,23 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(Request $request)
     {
+       
+       if ( $request->exists('client_id') )
+       {
+            $client_id = $request->get('client_id');
+       }
+       else
+       {
+            $client_id = Auth::user()->client->id;
+       }
 
+       $client = Client::find($client_id);
+
+       $company = Company::find($client->company_id);
+
+       return view('client.profile-view',['client' => $client, 'company' => $company]);
     }
 
     /**
@@ -226,10 +240,13 @@ class ClientController extends Controller
             $client->address_2 = $request->get('address_2');
             $client->city = $request->get('city');
             $client->post_code = $request->get('post_code');
+            $client->state = $request->get('state');
             $client->city = $request->get('city');
             $client->work_location = $request->get('work_location');
             $client->salary = $request->get('salary');
             $client->company_id = $request->get('company_id');
+
+            $client->duitnow_id = $request->get('nric');
 
             $client->save();
 

@@ -175,12 +175,26 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-3"><label for="state" class="form-label">State </label></div>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control @error('state') is-invalid 
+                                @enderror" value="{{ old('state',$client->state) }}" id="state" name="state" autofocus placeholder="Enter State">
+                                <div class="text-danger" id="state" data-ajax-feedback="state"></div>
+                                @error('state')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
     
                         <div class="row mb-3">
                             <div class="col-sm-3"><label for="work_location" class="form-label">Work Location </label></div>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control @error('work_location') is-invalid 
-                                @enderror" value="{{ old('client_location',$client->work_location) }}" id="work_location" name="work_location" autofocus placeholder="Enter location of your office">
+                                @enderror" value="{{ old('work_location',$client->work_location) }}" id="work_location" name="work_location" autofocus placeholder="Enter location of your office">
                                 <div class="text-danger" id="work_location" data-ajax-feedback="work_location"></div>
                                 @error('work_location')
                                 <span class="invalid-feedback" role="alert">
@@ -194,7 +208,7 @@
                             <div class="col-sm-3"><label for="salary" class="form-label">Salary/Month </label></div>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control @error('salary') is-invalid 
-                                @enderror" value="{{ old('client_salary',$client->salary) }}" id="salary" name="salary" autofocus placeholder="Enter your last drawn salary">
+                                @enderror" value="{{ old('salary',$client->salary) }}" id="salary" name="salary" autofocus placeholder="Enter your last drawn salary">
                                 <div class="text-danger" id="salary" data-ajax-feedback="salary"></div>
                                 @error('salary')
                                 <span class="invalid-feedback" role="alert">
@@ -221,7 +235,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        {{-- <div class="row mb-3">
                             <label for="avatar" class="col-sm-3 col-form-label">Profile Picture</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
@@ -239,9 +253,12 @@
                                 @enderror
                             </div>
                         </div>
-    
+     --}}
                         <div class="row justify-content-end">
-                            <div class="col-sm-9"><button class="btn btn-primary w-md" type="submit">Update</button></div>
+                            <div class="col-sm-9">
+                                <button class="btn btn-primary w-md" type="submit">Update</button>
+                                <a class="btn btn-secondary w-md" href="{{ route('index') }}">Cancel</a>
+                            </div>
                         </div>
                     </form>
             </div>

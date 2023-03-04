@@ -50,10 +50,10 @@
 
 
                                                 <div class="mb-3 row">
-                                                    <label for="username" class="col-md-4 col-form-label">User Name</label>
+                                                    <label for="username" class="col-md-4 col-form-label">User ID</label>
                                                     <div class="col-md-8">
                                                         <input type="text" class="form-control @error('username') is-invalid @enderror" id="useremail"
-                                                        value="{{ old('username') }}" name="username" placeholder="Choose your user name for login" autofocus required>
+                                                        value="{{ old('username') }}" name="username" placeholder="Choose your User ID" autofocus required>
 
                                                         @error('username')
                                                             <span class="invalid-feedback" role="alert">
@@ -99,7 +99,7 @@
                                                     <div class="col-md-8">
                                                         <input type="tel" class="form-control @error('mobileno') is-invalid @enderror"
                                                         value="{{ old('mobileno') }}" id="mobileno" name="mobileno" autofocus required
-                                                            placeholder="Enter Mobile Number (format: 01xxxxxxxx)">
+                                                            placeholder="Mobile number in the format 012345678">
 
 
                                                         @error('mobileno')

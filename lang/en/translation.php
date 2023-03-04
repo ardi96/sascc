@@ -199,6 +199,7 @@ return [
   "Documents" => "Documents",
   "Profile_Update" => "Update Profile",
   "Application_Link" => "Menu Link",
-  "Advance_Request" => "Advance Request"
+  "Advance_Request" => "Advance Request",
+  "Registration_Slip" => "Registration Slip",
 
 ];

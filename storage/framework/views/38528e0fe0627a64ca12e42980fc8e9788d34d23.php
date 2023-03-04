@@ -308,6 +308,34 @@ endif;
 unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-3"><label for="state" class="form-label">State </label></div>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control <?php $__errorArgs = ['state'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid 
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('state',$client->state)); ?>" id="state" name="state" autofocus placeholder="Enter State">
+                                <div class="text-danger" id="state" data-ajax-feedback="state"></div>
+                                <?php $__errorArgs = ['state'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                        </div>
     
                         <div class="row mb-3">
                             <div class="col-sm-3"><label for="work_location" class="form-label">Work Location </label></div>
@@ -320,7 +348,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid
                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('client_location',$client->work_location)); ?>" id="work_location" name="work_location" autofocus placeholder="Enter location of your office">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('work_location',$client->work_location)); ?>" id="work_location" name="work_location" autofocus placeholder="Enter location of your office">
                                 <div class="text-danger" id="work_location" data-ajax-feedback="work_location"></div>
                                 <?php $__errorArgs = ['work_location'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -348,7 +376,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid
                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('client_salary',$client->salary)); ?>" id="salary" name="salary" autofocus placeholder="Enter your last drawn salary">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('salary',$client->salary)); ?>" id="salary" name="salary" autofocus placeholder="Enter your last drawn salary">
                                 <div class="text-danger" id="salary" data-ajax-feedback="salary"></div>
                                 <?php $__errorArgs = ['salary'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -389,41 +417,12 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="avatar" class="col-sm-3 col-form-label">Profile Picture</label>
-                            <div class="col-sm-9">
-                                <div class="input-group">
-                                    <input type="file" class="form-control <?php $__errorArgs = ['avatar'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" id="avatar" name="avatar" autofocus>
-                                    <label class="input-group-text" for="avatar">Upload</label>
-                                </div>
-                                <div class="text-start mt-2">
-                                    <img src="<?php echo e(asset(Auth::user()->avatar)); ?>" alt="" class="rounded-circle avatar-lg">
-                                </div>
-                                <div class="text-danger" role="alert" id="avatarError" data-ajax-feedback="avatar"></div>
-                                <?php $__errorArgs = ['avatar'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                <span class="invalid-feedback" role="alert">
-                                    <strong><?php echo e($message); ?></strong>
-                                </span>
-                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                            </div>
-                        </div>
-    
+                        
                         <div class="row justify-content-end">
-                            <div class="col-sm-9"><button class="btn btn-primary w-md" type="submit">Update</button></div>
+                            <div class="col-sm-9">
+                                <button class="btn btn-primary w-md" type="submit">Update</button>
+                                <a class="btn btn-secondary w-md" href="<?php echo e(route('index')); ?>">Cancel</a>
+                            </div>
                         </div>
                     </form>
             </div>

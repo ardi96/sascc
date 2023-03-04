@@ -62,6 +62,8 @@ Route::middleware(['issccclient'])->group(function() {
     // //Update User Details
     Route::get('/profile-update',[ClientController::class,'edit']);
     
+    Route::get('/profile-view',[ClientController::class,'show'])->name('profile.view');
+    
     // Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
     
     Route::post('/update-profile/{id}', [App\Http\Controllers\ClientController::class, 'update'])->name('updateProfile');
@@ -83,8 +85,6 @@ Route::middleware(['issccclient'])->group(function() {
 
     Route::resource('advances',ClientAdvanceController::class);
     
-    // Route::get('/advances',[ClientAdvanceController::class,'index'])->name('advances');
-
     Route::get('/index',[App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
     // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
