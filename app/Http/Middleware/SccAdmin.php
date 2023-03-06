@@ -17,7 +17,7 @@ class SccAdmin
     public function handle(Request $request, Closure $next)
     {
 
-        if ( !$request->user() ||  $request->user()->roleid != 1)
+        if ( !$request->user() ||  $request->user()->role_id != 1)
         {
             abort(code: 404);
         }

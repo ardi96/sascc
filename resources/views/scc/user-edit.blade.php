@@ -20,7 +20,7 @@
                         @method("PUT")
                         @csrf
                         <div class="row mb-4">
-                            <label for="horizontal-username-input" class="col-sm-3 col-form-label">User Name</label>
+                            <label for="horizontal-username-input" class="col-sm-3 col-form-label">User ID</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="horizontal-username-input" value="{{ $user->username }}" disabled>
                             </div>
@@ -44,6 +44,27 @@
                                 <input type="text" class="form-control" id="horizontal-email-input" value="{{ $user->mobileno }}" name="mobileno">
                             </div>
                         </div>
+                       
+                        @if( $user->role_id == 2 ) 
+
+                        <div class="row mb-4">
+                            <label for="horizontal-company-input" class="col-sm-3 col-form-label">Company</label>
+                            <div class="col-sm-9">
+                                <select name="company_id" class="form-select" id="company_id" required>
+                                    <option value="0">Other</option>
+                                    @foreach($companies as $item)
+                                        <option value="{{ $item->id }}" @if ( old('company_id',$item->id) == $user->company_id) selected @endif) >{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('company_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        @endif
 
                         <div class="row justify-content-end">
                             <div class="col-sm-9">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,7 +42,7 @@ class UserController extends Controller
         User::create([
             'name' => $request->get('name'),
             'username' => $request->get('username'),
-            'roleid' => $request->get('roleid'),
+            'role_id' => $request->get('role_id'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
             'avatar' => 'images/default-avatar.jpg',
@@ -76,8 +77,16 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('scc.user-edit',['user' => $user]);
+        $companies = null;
+
+        if ( $user->role_id == 2) // company manager
+        {
+            $companies = Company::all();
+        }
+
+        return view('scc.user-edit',['user' => $user, 'companies' => $companies]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -99,6 +108,9 @@ class UserController extends Controller
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->locked = $request->get('locked');
+
+
+        $user->company_id = $request->get('company_id');
 
         // if ($request->file('avatar')) {
         //     $avatar = $request->file('avatar');

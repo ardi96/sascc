@@ -21,6 +21,13 @@
 @slot('title') Salary Advance Request @endslot
 @endcomponent
 
+@if ( session()->has('msg') )
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session()->get('msg') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ session()->forget('msg') }}
+    </div> 
+@endif 
 
 <div class="row">
     <div class="col-xl-12">
@@ -70,15 +77,17 @@
                                     <td style="text-align:center">
                                         <ul class="list-inline font-size-20 contact-links mb-0">
                                             <li class="list-inline-item px-2">
-                                                <a href="{{ URL::route('advances.show',$item->id) }}" target="_new" title="Show"><i class="bx bx-show-alt"></i></a>
+                                                {{-- <a href="{{ URL::route('advances.show',$item->id) }}" target="_new" title="Show"><i class="bx bx-show-alt"></i></a> --}}
                                                 
                                                 @if ( $item->status == "1000" )
-                                                    <form id="frm_delete" style="float: right" method="POST" action="{{ route('client-documents.destroy',['id'=>$item->id])}}">
+                                                    <form id="frm_delete" style="float: right" method="POST" action="{{ route('advances.destroy',['advance'=>$item->id]) }}">
+                                                        @method("DELETE")
                                                         @csrf
                                                         <a href="#" onclick="submit_form()">
                                                             <i class="bx bx-trash"></i></a> 
                                                     </form>
                                                 @endif 
+
                                             </li>
                                         </ul>
                                     </td>
@@ -119,7 +128,7 @@
     function submit_form()
     {
         let form = document.getElementById("frm_delete");
-        if ( confirm('Are you sure you want to delete ? '))
+        if ( confirm('Are you sure you want to cancel your advance request ? '))
         {
             form.submit();
         }

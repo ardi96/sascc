@@ -57,11 +57,11 @@
                                         </td>
 
                                         <td>
-                                            <?php if($item->roleid == 1 ): ?>
+                                            <?php if($item->role_id == 1 ): ?>
                                                 SCC Officer
-                                            <?php elseif($item->roleid == 2): ?>
+                                            <?php elseif($item->role_id == 2): ?>
                                                 Company/Employer
-                                            <?php else: ?>
+                                            <?php elseif($item->role_id == 3): ?>
                                                 Client
                                             <?php endif; ?>
                                         </td>

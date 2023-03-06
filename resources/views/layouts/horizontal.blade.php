@@ -27,6 +27,7 @@
         </div>
 
         <div class="d-flex">
+            @if(1==2)
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-bell bx-tada"></i>
@@ -109,7 +110,8 @@
                     </div>
                 </div>
             </div>
-
+            @endif 
+            
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}" alt="Header Avatar">
@@ -134,8 +136,11 @@
 </header>
 
 <!-- navigation bar begin -->
-
-@component('components.scc-menu')
+@if ( Auth::user()->role_id == 3 )
+    @component('components.scc-menu')
+@elseif (Auth::user()->role_id == 2)
+    @component('components.manager-menu')
+@endif 
 
 @endcomponent
 

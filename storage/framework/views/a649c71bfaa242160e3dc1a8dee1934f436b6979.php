@@ -36,47 +36,59 @@
                         <?php echo csrf_field(); ?>
                         <input type="hidden" name="client_id" value ="<?php echo e($client->id); ?>"">
                         
-
-                       
-
                         <div class="row mb-3">
-                            <label for="userdob" class="col-sm-3 col-form-label">When do you need it</label>
+                            <label for="requested_date" class="col-sm-3 col-form-label">When do you need it</label>
                             <div class="col-sm-9">
                                 <div class="input-group" id="datepicker1">
-                                    <input type="text" class="form-control <?php $__errorArgs = ['dob'];
+                                    <input type="date" class="form-control <?php $__errorArgs = ['requested_date'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" placeholder="dd-mm-yyyy" 
-                                    data-date-format="dd-mm-yyyy" data-date-container='#datepicker1' 
-                                    data-date-end-date="0d" value="<?php echo e(date('d-m-Y', strtotime(now()) )); ?>" data-provide="datepicker" name="dob" id="dob">
-                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                </div>
-                                <div class="text-danger" id="dobError" data-ajax-feedback="dob"></div>
-                                <?php $__errorArgs = ['dob'];
+unset($__errorArgs, $__bag); ?>" 
+                                    
+                                    
+                                    
+                                    value="<?php echo e(old('requested_date', date('d-m-Y', strtotime(now())))); ?>" 
+                                    
+                                    name="requested_date" id="requested_date">
+                                    
+                                    <?php $__errorArgs = ['requested_date'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                <span class="invalid-feedback" role="alert">
-                                    <strong><?php echo e($message); ?></strong>
-                                </span>
-                                <?php unset($message);
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                    <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                </div>
+                                
+                                
                             </div>
                         </div>
-
-                        
-
+                        <?php $__errorArgs = ['requested_date'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <span class="invalid-feedback" role="alert">
+                            <strong><?php echo e($message); ?></strong>
+                            <strong>ERROR</strong>
+                        </span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         <div class="row mb-3">
                             <label for="salary" class="col-sm-3 col-form-label">How much do you want </label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control <?php $__errorArgs = ['salary'];
+                                <input type="number" class="form-control <?php $__errorArgs = ['advance_amount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -84,9 +96,11 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid
                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('client_salary',$client->salary)); ?>" id="salary" name="salary" autofocus placeholder="Enter your last drawn salary">
-                                <div class="text-danger" id="salary" data-ajax-feedback="salary"></div>
-                                <?php $__errorArgs = ['salary'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('advance_amount',$advance->advance_amount)); ?>" id="advance_amount" 
+                                name="advance_amount" autofocus placeholder="Enter your advance request amount">
+                                <div class="text-danger" id="advance_amount" data-ajax-feedback="advance_amount"></div>
+                                
+                                <?php $__errorArgs = ['advance_amount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -100,11 +114,11 @@ endif;
 unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
-                        
+
                         <div class="row mb-3">
-                            <label for="name" class="col-sm-3 col-form-label">Purpose of your advance</label>
+                            <label for="duration" class="col-sm-3 col-form-label">Duration (in Months) </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control <?php $__errorArgs = ['name'];
+                                <input type="number" class="form-control <?php $__errorArgs = ['duration'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -112,9 +126,10 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid
                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('name',$client->name)); ?>" id="name" name="name" autofocus placeholder="Enter Full Name">
-                                <div class="text-danger" id="nameError" data-ajax-feedback="name"></div>
-                                <?php $__errorArgs = ['name'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('duration',$advance->duration)); ?>" id="duration" name="duration" 
+                                    autofocus placeholder="Enter duration of advance (in months)">
+                                <div class="text-danger" id="duration" data-ajax-feedback="duration"></div>
+                                <?php $__errorArgs = ['duration'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

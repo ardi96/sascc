@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'sccadmin' => \App\Http\Middleware\SccAdmin::class,
         'issccclient' => \App\Http\Middleware\IsSccClient::class,
+        'ismanager' => \App\Http\Middleware\IsManager::class,
     ];
 }

@@ -226,35 +226,7 @@ unset($__errorArgs, $__bag); ?>
 
                                                 
 
-                                                <div class="mb-3 row">
-                                                    <label for="avatar" class="col-form-label col-md-4">Profile Picture</label>
-                                                    <div class="col-md-8">
-                                                        <div class="input-group">
-                                                            <input type="file" class="form-control <?php $__errorArgs = ['avatar'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" id="inputGroupFile02" name="avatar" autofocus>
-                                                            
-                                                        </div>
-
-                                                        <?php $__errorArgs = ['avatar'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong><?php echo e($message); ?></strong>
-                                                            </span>
-                                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                    </div>
-                                                </div>
+                                                
 
                                                 <div class="mt-4 d-grid">
                                                     <button class="btn btn-primary waves-effect waves-light"

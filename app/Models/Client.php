@@ -29,4 +29,17 @@ class Client extends Model
         'company_id',
         'user_id',
     ];
+
+    public function documents()
+    {
+        return $this->hasMany(ClientDocument::class);
+    }
+
+    public function advances()
+    {
+        return $this->hasMany(ClientAdvance::Class);
+    }
+    
+
+
 }

@@ -19,6 +19,33 @@ use App\Http\Requests\UpdateClientRequest;
 class ClientController extends Controller
 {
 
+    /**
+     * iterate thru client-documents. if all are 
+     * validated, change the client-status to 4000 (active)
+     */
+    public function validateClient(Client $client)
+    {
+        $validated = TRUE;
+
+        $documents = $client->documents();
+
+        foreach($documents as $document)
+        {
+            if ($document->status <> '4000')
+            {
+                $validated = FALSE;
+            }
+        }
+
+        if ( $validated )
+        {
+            $client->status = '4000';
+            $client->save();
+        }
+
+        return $validated;
+
+    }
 
     /**
      * validator incoming request

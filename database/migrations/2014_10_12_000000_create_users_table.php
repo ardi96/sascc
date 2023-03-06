@@ -24,9 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('roleid')->nullable();
+            $table->integer('role_id')->nullable();
             $table->boolean('locked')->nullable();
             $table->string('mobileno',12)->unique;
+            $table->integer('company_id')->nullable();
             $table->text('avatar');
 
             // $table->string('nric',12)->unique;
@@ -47,12 +48,37 @@ class CreateUsersTable extends Migration
             'mobileno'=>'0112828743',
             'email' => 'admin@themesbrand.com',
             'locked' => 0,
-            'roleid' => 1,
+            'role_id' => 1,
             'password' => Hash::make('123456'),
             'email_verified_at'=>'2022-01-02 17:04:58',
             'avatar' => 'images/avatar-1.jpg',
             'created_at' => now(),
         ]);
+
+        User::create(['username'=>'manager',
+        'name' => 'Manager',
+        'mobileno'=>'0116728743',
+        'email' => 'admin@company.com',
+        'locked' => 0,
+        'role_id' => 2,
+        'password' => Hash::make('123456'),
+        'email_verified_at'=>'2022-01-02 17:04:58',
+        'avatar' => 'images/avatar-1.jpg',
+        'created_at' => now(),
+        ]);
+
+        User::create(['username'=>'userx',
+            'name' => 'User X Space',
+            'mobileno'=>'0131828743',
+            'email' => 'userxspace@outerworld.com',
+            'locked' => 0,
+            'role_id' => 3,
+            'password' => Hash::make('123456'),
+            'email_verified_at'=>'2022-01-02 17:04:58',
+            'avatar' => 'images/avatar-1.jpg',
+            'created_at' => now(),
+        ]);
+
     }
 
     /**

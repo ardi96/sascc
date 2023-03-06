@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\advance_request_date;
 
 class StoreClientAdvanceRequest extends FormRequest
 {
@@ -24,7 +25,10 @@ class StoreClientAdvanceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'requested_date' => ['date',new advance_request_date],
+            'duration' => ["numeric","min:12"],
+            'advance_amount' =>["numeric","min:0"]
         ];
     }
+
 }

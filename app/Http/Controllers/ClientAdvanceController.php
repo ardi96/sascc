@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use Illuminate\Http\Request;
 use App\Models\ClientAdvance;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreClientAdvanceRequest;
@@ -33,8 +34,24 @@ class ClientAdvanceController extends Controller
     {
         
         $client = Auth::user()->client;
+
+        if ($client->status <> '4000') 
+        {
+            return redirect()->route('advances.index')->with('msg','Your registration is pending for approval. Salary Advance request is not possible at this moment.');
+        }
         
-        return view('client.advance-create',['client' => $client]);
+        $advances = ClientAdvance::where('client_id', $client->id)->get();
+
+        if ( count( $advances ) > 0 )
+        {
+            return redirect()->route('advances.index')->with('msg','You have active request. Salary Advance request is not possible at this moment.');
+        }
+        
+        $advance = new ClientAdvance();
+
+        return view('client.advance-create',['client' => $client,
+                    'advance' => $advance]);
+    
     }
 
     /**
@@ -45,7 +62,18 @@ class ClientAdvanceController extends Controller
      */
     public function store(StoreClientAdvanceRequest $request)
     {
-    
+        $request->validated();
+
+        ClientAdvance::create([
+            "client_id" => $request->get("client_id"),
+            "requested_date" => $request->get("requested_date"),
+            "advance_amount"=> $request->get("advance_amount"),
+            "duration" => $request->get("duration"),
+            "status" => "1000",
+            "disbursed_amount" => 0
+        ]);
+
+        return redirect()->route('advances.index')->with('msg','Your request for advance has been created');
     }
 
     /**
@@ -88,8 +116,12 @@ class ClientAdvanceController extends Controller
      * @param  \App\Models\ClientAdvance  $clientAdvance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClientAdvance $clientAdvance)
+    // public function destroy(ClientAdvance $clientAdvance)
+    public function destroy(Request $request)
     {
-        //
+
+        ClientAdvance::find($request->advance)->delete();
+
+        return redirect()->route('advances.index')->with('msg','Your advance request has been deleted.');
     }
 }

@@ -60,11 +60,11 @@
                                         </td>
 
                                         <td>
-                                            @if ($item->roleid == 1 )
+                                            @if ($item->role_id == 1 )
                                                 SCC Officer
-                                            @elseif ($item->roleid == 2)
+                                            @elseif ($item->role_id == 2)
                                                 Company/Employer
-                                            @else
+                                            @elseif ($item->role_id == 3)
                                                 Client
                                             @endif
                                         </td>

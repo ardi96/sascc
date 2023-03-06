@@ -93,6 +93,7 @@ class RegisterController extends Controller
             'avatar' => "/images/" . $avatarName,
             // 'nric' => $data['nric'],
             'mobileno' => $data['mobileno'],
+            'role_id' => 3
         ]);
 
         Client::create([

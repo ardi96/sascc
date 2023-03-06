@@ -27,8 +27,9 @@ class User extends Authenticatable
         'avatar',
         'nric',
         'mobileno',
-        'roleid',
+        'role_id',
         'locked',
+        'company_id'
     ];
 
     /**

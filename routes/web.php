@@ -8,6 +8,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ClientAdvanceController;
 use App\Http\Controllers\ClientDocumentController;
+use App\Http\Controllers\Manager\ManagerHomeController;
 use App\Models\ClientAdvance;
 
 /*
@@ -44,16 +45,31 @@ use App\Models\ClientAdvance;
 Auth::routes();
 
 
-
-Route::middleware(['sccadmin'])->group(function(){
-    Route::get('/sccadmin', function() { return View('scc.admin-index'); })->name('sccadmin');
-    Route::resource('users', UserController::class);
-    Route::resource('companies', CompanyController::class);
-    Route::resource('clients',ClientController::class);
-    Route::get('/clients-import',[ClientController::class,'showImportClientForm']);
-    Route::post('/clients-import',[ClientController::class,'importClient'])->name('clients.import');
+Route::middleware(['ismanager'])->group(function(){
+  
+    Route::get('/manager', [ManagerHomeController::class,'index'])->name('manager.index');
+    Route::get('/manager/client-view', [ManagerHomeController::class,'clientView'])->name('manager.clientView');
+    Route::get('/manager/edit', [ManagerHomeController::class,'companyEdit'])->name('manager.companyEdit');
+    Route::post('/manager', [ManagerHomeController::class,'companyUpdate'])->name('manager.companyUpdate');
+    Route::post('/manager/client-approve', [ManagerHomeController::class,'clientApproval'])->name('manager.clientApproval');
+    
 });
 
+
+Route::middleware(['sccadmin'])->group(function(){
+    Route::get('/sccadmin', function() { 
+        return View('scc.admin-index'); })->name('sccadmin');
+
+    Route::resource('users', UserController::class);
+    
+    Route::resource('companies', CompanyController::class);
+    
+    Route::resource('clients',ClientController::class);
+    
+    Route::get('/clients-import',[ClientController::class,'showImportClientForm']);
+    
+    Route::post('/clients-import',[ClientController::class,'importClient'])->name('clients.import');
+});
 
 Route::middleware(['issccclient'])->group(function() {
 

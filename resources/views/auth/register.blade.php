@@ -174,12 +174,12 @@
                                                     </div>
                                                 </div> --}}
 
-                                                <div class="mb-3 row">
+                                                {{-- <div class="mb-3 row">
                                                     <label for="avatar" class="col-form-label col-md-4">Profile Picture</label>
                                                     <div class="col-md-8">
                                                         <div class="input-group">
                                                             <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="inputGroupFile02" name="avatar" autofocus>
-                                                            {{-- <label class="input-group-text" for="inputGroupFile02">Upload</label> --}}
+                                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
                                                         </div>
 
                                                         @error('avatar')
@@ -188,7 +188,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="mt-4 d-grid">
                                                     <button class="btn btn-primary waves-effect waves-light"

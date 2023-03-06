@@ -21,6 +21,15 @@
 <?php $__env->slot('title'); ?> Salary Advance Request <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 
+<?php if( session()->has('msg') ): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?php echo e(session()->get('msg')); ?>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <?php echo e(session()->forget('msg')); ?>
+
+    </div> 
+<?php endif; ?> 
 
 <div class="row">
     <div class="col-xl-12">
@@ -73,15 +82,17 @@
                                     <td style="text-align:center">
                                         <ul class="list-inline font-size-20 contact-links mb-0">
                                             <li class="list-inline-item px-2">
-                                                <a href="<?php echo e(URL::route('advances.show',$item->id)); ?>" target="_new" title="Show"><i class="bx bx-show-alt"></i></a>
+                                                
                                                 
                                                 <?php if( $item->status == "1000" ): ?>
-                                                    <form id="frm_delete" style="float: right" method="POST" action="<?php echo e(route('client-documents.destroy',['id'=>$item->id])); ?>">
+                                                    <form id="frm_delete" style="float: right" method="POST" action="<?php echo e(route('advances.destroy',['advance'=>$item->id])); ?>">
+                                                        <?php echo method_field("DELETE"); ?>
                                                         <?php echo csrf_field(); ?>
                                                         <a href="#" onclick="submit_form()">
                                                             <i class="bx bx-trash"></i></a> 
                                                     </form>
                                                 <?php endif; ?> 
+
                                             </li>
                                         </ul>
                                     </td>
@@ -122,7 +133,7 @@
     function submit_form()
     {
         let form = document.getElementById("frm_delete");
-        if ( confirm('Are you sure you want to delete ? '))
+        if ( confirm('Are you sure you want to cancel your advance request ? '))
         {
             form.submit();
         }

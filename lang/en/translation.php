@@ -201,5 +201,10 @@ return [
   "Application_Link" => "Menu Link",
   "Advance_Request" => "Advance Request",
   "Registration_Slip" => "Registration Slip",
+  "Advance_Create" => "Create a Salary Advance Request",
+  "Advances" => "Salary Advances",
+
+  "Approve_Registration" => "Approve Registration",
+  "Company_Details" => "Company Details",
 
 ];

@@ -3,7 +3,7 @@
 <?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Dashboards'); ?> <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('body'); ?>
-    <body data-topbar="light" data-layout="horizontal" style="margin:0 auto;">
+    <body data-topbar="light" data-layout="horizontal" style="width:80%; margin:0 auto;">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -18,30 +18,27 @@
     </div> 
 <?php endif; ?> 
 
-<?php $__env->startComponent('components.breadcrumb'); ?>
-<?php $__env->slot('li_1'); ?> Dashboards <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?> Dashboard <?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
+
 
 <div class="row">
     <div class="col-xl-4">
         <div class="card overflow-hidden">
             <div class="bg-primary bg-soft">
                 <div class="row">
-                    <div class="col-7">
+                    <div class="col-8">
                         <div class="text-primary p-3">
-                            <h5 class="text-primary">Welcome Back !</h5>
-                            <p><?php echo e(Str::ucfirst(Auth::user()->name)); ?></p>
+                            <h5 class="text-primary">Welcome To </h5>
+                            <p>SCC - Salary Advance Programme</p>
                         </div>
                     </div>
-                    <div class="col-5 align-self-end">
+                    <div class="col-4 align-self-end">
                         <img src="<?php echo e(URL::asset('/assets/images/profile-img.png')); ?>" alt="" class="img-fluid">
                     </div>
                 </div>
             </div>
             <div class="card-body pt-0">
                 <div class="row">
-                    <div class="col-sm-5">
+                    <div class="col-sm-12">
                         <div class="avatar-md profile-user-wid mb-4">
                             <img src="<?php echo e(isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg')); ?>" alt=""
                             class="img-thumbnail rounded-circle">
@@ -49,48 +46,69 @@
                         <h5 class="font-size-15"><?php echo e(Str::ucfirst(Auth::user()->client->name)); ?></h5>
                         <p class="text-muted mb-0 text-truncate">
                             
-                                <?php echo e(Auth::user()->client->work_place); ?>
+                                <?php echo e(Auth::user()->client->work_location); ?>
 
                             
                         </p>
                         <div class="mt-4">
-                            <a href="/profile-update" class="btn btn-primary waves-effect waves-light btn-sm">Update Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-7">
-                        <div class="pt-4">
-                            <div class="row">
-                                
-                            </div>
-                            
+                            <a style="float:right" href="/profile-update" class="btn btn-primary waves-effect waves-light btn-sm">Update Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
     </div>
 
     <div class="col-xl-8">
+        <div class="row lh-sm">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="assets/images/small/img-1.jpg" class="d-block w-100" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block"></div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="assets/images/small/img-3.jpg" class="d-block w-100" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/images/small/img-6.jpg" class="d-block w-100" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block"></div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <hr>
         <div class="row">
-
             <div class="col-md-4">
                 <div class="card mini-stats-wid">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">Subscription Status</p>
-                                <h4 class="mb-0">Pending</h4>
+                                <h4 class="mb-0">
+                                    <?php if(Auth::user()->client->status == "4000"): ?>
+                                        Active
+                                    <?php else: ?>
+                                        Pending
+                                    <?php endif; ?> 
+                                </h4>
                             </div>
 
-                            <div class="flex-shrink-0 align-self-center">
-                                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
-                                    <span class="avatar-title">
-                                        <i class="bx bx-copy-alt font-size-24"></i>
-                                    </span>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -105,13 +123,7 @@
                                 <h4 class="mb-0">MYR 0.00</h4>
                             </div>
 
-                            <div class="flex-shrink-0 align-self-center ">
-                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle bg-primary">
-                                        <i class="bx bx-archive-in font-size-24"></i>
-                                    </span>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -125,13 +137,7 @@
                                 <h4 class="mb-0">29 Oct, 2024</h4>
                             </div>
 
-                            <div class="flex-shrink-0 align-self-center">
-                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle bg-primary">
-                                        <i class="bx bx-purchase-tag-alt font-size-24"></i>
-                                    </span>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -66,6 +66,15 @@
                         {{-- <div class="col-sm-6 text-sm-end"> --}}
                         <div class="col-sm-6">
                             <address>
+                                <strong>Bank Code: </strong>
+                                {{ $client->bank_code }}<br>
+                            </address>
+                            <address>
+                                <strong>Bank Acc. No.: </strong>
+                                {{ $client->bank_acc_no }}<br>
+                            </address>
+                            <hr>
+                            <address>
                                 <strong>Address (1): </strong>
                                 {{ $client->address_1 }}<br>
                             </address>
@@ -88,7 +97,7 @@
                         </div>
                     </div>
                    
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-sm-6">
                             <p>
                                 The information on this website is for general informational purposes only. 

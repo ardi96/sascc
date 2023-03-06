@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsSccClient
+class IsManager
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,8 @@ class IsSccClient
      */
     public function handle(Request $request, Closure $next)
     {
-        if ( !$request->user() ||  $request->user()->role_id != 3)
+
+        if ( !$request->user() ||  $request->user()->role_id != 2)
         {
             abort(code: 404);
         }
@@ -36,4 +37,6 @@ class IsSccClient
             return route('login');
         }
     }
+
+
 }

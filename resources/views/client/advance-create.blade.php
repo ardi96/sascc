@@ -36,50 +36,58 @@
                         @csrf
                         <input type="hidden" name="client_id" value ="{{ $client->id }}"">
                         
-
-                       
-
                         <div class="row mb-3">
-                            <label for="userdob" class="col-sm-3 col-form-label">When do you need it</label>
+                            <label for="requested_date" class="col-sm-3 col-form-label">When do you need it</label>
                             <div class="col-sm-9">
                                 <div class="input-group" id="datepicker1">
-                                    <input type="text" class="form-control @error('dob') is-invalid @enderror" placeholder="dd-mm-yyyy" 
-                                    data-date-format="dd-mm-yyyy" data-date-container='#datepicker1' 
-                                    data-date-end-date="0d" value="{{ date('d-m-Y', strtotime(now()) ) }}" data-provide="datepicker" name="dob" id="dob">
-                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                    <input type="date" class="form-control @error('requested_date') is-invalid @enderror" 
+                                    {{-- placeholder="dd-mm-yyyy"  --}}
+                                    {{-- data-date-format="dd-mm-yyyy" data-date-container='#datepicker1'  --}}
+                                    {{-- data-date-end-date="30d"  --}}
+                                    value="{{    old('requested_date', date('d-m-Y', strtotime(now())))    }}" 
+                                    {{-- data-provide="datepicker"  --}}
+                                    name="requested_date" id="requested_date">
+                                    {{-- <span class="input-group-text"><i class="mdi mdi-calendar"></i></span> --}}
+                                    @error('requested_date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
-                                <div class="text-danger" id="dobError" data-ajax-feedback="dob"></div>
-                                @error('dob')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                {{-- <div class="text-danger" id="requested_date" data-ajax-feedback="requested_date"></div> --}}
+                                
                             </div>
                         </div>
-
-                        
-
+                        @error('requested_date')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            <strong>ERROR</strong>
+                        </span>
+                        @enderror
                         <div class="row mb-3">
                             <label for="salary" class="col-sm-3 col-form-label">How much do you want </label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control @error('salary') is-invalid 
-                                @enderror" value="{{ old('client_salary',$client->salary) }}" id="salary" name="salary" autofocus placeholder="Enter your last drawn salary">
-                                <div class="text-danger" id="salary" data-ajax-feedback="salary"></div>
-                                @error('salary')
+                                <input type="number" class="form-control @error('advance_amount') is-invalid 
+                                @enderror" value="{{ old('advance_amount',$advance->advance_amount) }}" id="advance_amount" 
+                                name="advance_amount" autofocus placeholder="Enter your advance request amount">
+                                <div class="text-danger" id="advance_amount" data-ajax-feedback="advance_amount"></div>
+                                
+                                @error('advance_amount')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="row mb-3">
-                            <label for="name" class="col-sm-3 col-form-label">Purpose of your advance</label>
+                            <label for="duration" class="col-sm-3 col-form-label">Duration (in Months) </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control @error('name') is-invalid 
-                                @enderror" value="{{ old('name',$client->name) }}" id="name" name="name" autofocus placeholder="Enter Full Name">
-                                <div class="text-danger" id="nameError" data-ajax-feedback="name"></div>
-                                @error('name')
+                                <input type="number" class="form-control @error('duration') is-invalid 
+                                @enderror" value="{{ old('duration',$advance->duration) }}" id="duration" name="duration" 
+                                    autofocus placeholder="Enter duration of advance (in months)">
+                                <div class="text-danger" id="duration" data-ajax-feedback="duration"></div>
+                                @error('duration')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

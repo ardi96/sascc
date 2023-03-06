@@ -20,7 +20,7 @@
                         <?php echo method_field("PUT"); ?>
                         <?php echo csrf_field(); ?>
                         <div class="row mb-4">
-                            <label for="horizontal-username-input" class="col-sm-3 col-form-label">User Name</label>
+                            <label for="horizontal-username-input" class="col-sm-3 col-form-label">User ID</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="horizontal-username-input" value="<?php echo e($user->username); ?>" disabled>
                             </div>
@@ -44,6 +44,34 @@
                                 <input type="text" class="form-control" id="horizontal-email-input" value="<?php echo e($user->mobileno); ?>" name="mobileno">
                             </div>
                         </div>
+                       
+                        <?php if( $user->role_id == 2 ): ?> 
+
+                        <div class="row mb-4">
+                            <label for="horizontal-company-input" class="col-sm-3 col-form-label">Company</label>
+                            <div class="col-sm-9">
+                                <select name="company_id" class="form-select" id="company_id" required>
+                                    <option value="0">Other</option>
+                                    <?php $__currentLoopData = $companies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($item->id); ?>" <?php if( old('company_id',$item->id) == $user->company_id): ?> selected <?php endif; ?>) ><?php echo e($item->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                                <?php $__errorArgs = ['company_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                        </div>
+
+                        <?php endif; ?>
 
                         <div class="row justify-content-end">
                             <div class="col-sm-9">
