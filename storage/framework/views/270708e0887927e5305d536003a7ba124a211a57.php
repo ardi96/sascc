@@ -21,6 +21,7 @@
 
 
 <div class="row">
+    <?php if(1==2): ?>
     <div class="col-xl-4">
         <div class="card overflow-hidden">
             <div class="bg-primary bg-soft">
@@ -58,8 +59,10 @@
             </div>
         </div>
     </div>
+    <?php endif; ?> 
 
-    <div class="col-xl-8">
+    <div class="col-xl-12">
+        <?php if(1==2): ?>
         <div class="row lh-sm">
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -91,14 +94,14 @@
                 </button>
             </div>
         </div>
-        <hr>
+        <?php endif; ?>         
         <div class="row">
             <div class="col-md-4">
-                <div class="card mini-stats-wid">
+                <div class="card mini-stats-wid  text-white bg-primary">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Subscription Status</p>
+                                <p class="text-mutedx fw-medium">Subscription Status</p>
                                 <h4 class="mb-0">
                                     <?php if(Auth::user()->client->status == "4000"): ?>
                                         Active
@@ -115,11 +118,11 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card mini-stats-wid">
+                <div class="card mini-stats-wid text-white bg-secondary">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Current Balance</p>
+                                <p class="text-mutedx fw-medium">Current Balance</p>
                                 <h4 class="mb-0">MYR 0.00</h4>
                             </div>
 
@@ -129,11 +132,11 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card mini-stats-wid">
+                <div class="card mini-stats-wid text-white bg-success">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Subscription Expiry Date</p>
+                                <p class="text-mutedx fw-medium">Subscription Expiry Date</p>
                                 <h4 class="mb-0">29 Oct, 2024</h4>
                             </div>
 

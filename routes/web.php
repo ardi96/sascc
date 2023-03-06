@@ -44,6 +44,7 @@ use App\Models\ClientAdvance;
  */
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 Route::middleware(['ismanager'])->group(function(){
   
@@ -54,7 +55,6 @@ Route::middleware(['ismanager'])->group(function(){
     Route::post('/manager/client-approve', [ManagerHomeController::class,'clientApproval'])->name('manager.clientApproval');
     
 });
-
 
 Route::middleware(['sccadmin'])->group(function(){
     Route::get('/sccadmin', function() { 
@@ -72,8 +72,6 @@ Route::middleware(['sccadmin'])->group(function(){
 });
 
 Route::middleware(['issccclient'])->group(function() {
-
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
     // //Update User Details
     Route::get('/profile-update',[ClientController::class,'edit']);

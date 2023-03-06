@@ -37,9 +37,25 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-        if (view()->exists($request->path())) {
-            return view($request->path());
+        if ( Auth::check() )
+        {
+            if (Auth::user()->role_id == 1)
+            {
+                return redirect()->route('sccadmin');
+            }
+            else if ( Auth::user()->role_id == 2)
+            {   
+                return redirect()->route('manager.index');
+            }
+            else
+            {
+                return view('index');
+            }
         }
+        
+        // if (view()->exists($request->path())) {
+        //     return view($request->path());
+        // }
 
         return abort(404);
 
